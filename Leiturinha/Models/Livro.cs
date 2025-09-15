@@ -17,7 +17,7 @@ namespace Leiturinha.Models
         public string Autor { get; set; } = string.Empty; //para começar como nula
 
         [Required]
-        [StringLength(250)]
+        [StringLength(800)]
         public string Descricao { get; set; } = string.Empty;
 
         [Required]
@@ -31,7 +31,7 @@ namespace Leiturinha.Models
         [Required]
         public int ClassificacaoIndicativaId { get; set; }
         public ClassificacaoIndicativa ClassificacaoIndicativa { get; set; } = null!;
-
+        public ICollection<ImagemLivro> Imagens { get; set; } = new List<ImagemLivro>();
         public ICollection<Avaliacao> Avaliacoes { get; set; } = new List<Avaliacao>();
         public ICollection<Comentario> Comentarios { get; set; } = new List<Comentario>();
     }
