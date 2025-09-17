@@ -281,12 +281,12 @@ namespace Leiturinha.Data
                 new Livro
                 {
                     Id = 26,
-                    Titulo = "O Gato e o Escorpião",
-                    Autor = "Ana Maria Machado",
-                    Descricao = "Fábula que ensina sobre confiança e consequências das ações.",
+                    Titulo = "O rato do campo e o rato da cidade",
+                    Autor = " Roberto Weigand ",
+                    Descricao = "Dois amigos ratinhos moravam em lugares diferente, um na cidade e o outro no campo. Eles visitam um a casa do outro e vivem grandes aventuras. Leia esta história e entenda o valor da simplicidade e o que cada lugar tem de bom.",
                     Capa = "capas/gato_escorpiao.jpg",
                     GeneroId = 3,
-                    ClassificacaoIndicativaId = 5 // 10–12 anos
+                    ClassificacaoIndicativaId = 2 // 10–12 anos
                 },
                 new Livro
                 {
@@ -393,12 +393,12 @@ namespace Leiturinha.Data
                 new Livro
                 {
                     Id = 37,
-                    Titulo = "O Reino das Sombras",
-                    Autor = "Tatiana Belinky",
-                    Descricao = "História de aventura e fantasia, com mistérios que estimulam a criatividade.",
+                    Titulo = "O Rato da Cidade e o Rato do Campo",
+                    Autor = " Roberto Weigand",
+                    Descricao = "Fábula que ensina sobre escolhas de vida e o valor da simplicidade.",
                     Capa = "capas/reino_das_sombras.jpg",
-                    GeneroId = 4,
-                    ClassificacaoIndicativaId = 5 // 10–12 anos
+                    GeneroId = 3,
+                    ClassificacaoIndicativaId = 3 // 10–12 anos
                 },
                 new Livro
                 {
@@ -485,9 +485,9 @@ namespace Leiturinha.Data
                 new Livro
                 {
                     Id = 46,
-                    Titulo = "O Cão e o Gato: Poemas",
-                    Autor = "Emília Nuñez",
-                    Descricao = "Poesias que exploram amizade, animais e situações do cotidiano infantil.",
+                    Titulo = "Cantigamente",
+                    Autor = "Leo Cunha",
+                    Descricao = "Coletânea de poemas com trocadilhos e temas do imaginário cultural infantil.",
                     Capa = "capas/cao_gato_poemas.jpg",
                     GeneroId = 5,
                     ClassificacaoIndicativaId = 3 // 6–7 anos
@@ -525,9 +525,9 @@ namespace Leiturinha.Data
                 new Livro
                 {
                     Id = 50,
-                    Titulo = "O Livro da Poesia Infantil",
-                    Autor = "Tatiana Belinky",
-                    Descricao = "Diversos poemas para estimular o gosto pela leitura e pela rima desde cedo.",
+                    Titulo = "Todo Dia é Dia de Poesia",
+                    Autor = "Roseana Murray",
+                    Descricao = "Antologia poética que fala sobre amor, cotidiano e paisagens brasileiras.",
                     Capa = "capas/livro_poesia_infantil.jpg",
                     GeneroId = 5,
                     ClassificacaoIndicativaId = 5 // 10–12 anos
