@@ -29,7 +29,7 @@ namespace Leiturinha.Data
                    Id = 1,
                    Titulo = "O Menino Maluquinho",
                    Autor = "Ziraldo",
-                   Descricao = "Aventuras de um menino travesso e criativo, explorando amizade e imaginação.",
+                   Descricao = "Um menininho traquinas, diziam. Tinha macaquinhos no sótão, deitava e rolava, fazendo confusão. Um anjinho, um saci? Alegria da casa, liderava a garotada. Namorador, fazia versinhos, compunha canções, inventava brincadeiras. Era sabido, um amigão. “Menino Maluquinho”, diziam sorrindo as pessoas. Não era, não! Só mais tarde descobriram que tinha sido um garotinho muito amado e, por isso mesmo, muito feliz.",
                    Capa = "capas/o_menino_maluquinho.jpg",
                    GeneroId = 1, // Aventura
                    ClassificacaoIndicativaId = 2 // 3–5 anos
@@ -37,9 +37,9 @@ namespace Leiturinha.Data
                 new Livro
                 {
                     Id = 2,
-                    Titulo = "O Menino Maluquinho e a Árvore",
+                    Titulo = "Maluquinho de família",
                     Autor = "Ziraldo",
-                    Descricao = "O Menino Maluquinho enfrenta aventuras e descobre valores como amizade e respeito.",
+                    Descricao = "Tudo começa com um trabalho escolar. A professora pede uma pesquisa sobre a família real do Brasil e a turma se diverte revelando suas origens: Julieta garante descender de uma linhagem de artistas, enquanto Junim lembra que seus ancestrais eram do circo. Mas o Menino Maluquinho, personagem criado por Ziraldo, não sabe nada sobre sua árvore genealógica. A partir desse instigante ponto de partida, o autor desenvolve uma aventura baseada no álbum de fotos antigas que o avô do Maluquinho guarda com carinho. Nesta divertida história em quadrinhos as lembranças narradas pelo avô e pelos pais do menino promovem o encontro afetivo dele com o passado. Da infância do bisavô até os tempos recentes, o garoto ouve com atenção e se diverte com a sucessão de memórias familiares, e conclui que a maluquice está em seu DNA. O lançamento do livro Maluquinho de família acontece durante a 16ª Bienal do Livro do Rio de Janeiro – de 29 de agosto a 8 de setembro –, evento que terá Ziraldo como grande homenageado. Segundo os organizadores, o autor é uma presença constante em todas as bienais por “aproximar a garotada do mundo dos livros”.",
                     Capa = "capas/o_menino_maluquinho_arvore.jpg",
                     GeneroId = 1,
                     ClassificacaoIndicativaId = 3 // 6–7 anos
@@ -47,19 +47,19 @@ namespace Leiturinha.Data
                 new Livro
                 {
                     Id = 3,
-                    Titulo = "O Mistério do Cinco Estrelas",
-                    Autor = "Ruth Rocha",
-                    Descricao = "Uma aventura investigativa que ensina raciocínio lógico e valores de amizade.",
+                    Titulo = "Como ser Amigo: um Livro Sobre Amizade",
+                    Autor = "Molly Wigand",
+                    Descricao = "Em Como ser amigo - Um livro sobre amizade... Feito pra mim!, a autora Molly Wigand apresenta às crianças os valores que ajudam a construir boas amizades: lealdade, verdade e honestidade. E como as crianças podem se tornar boas amigas umas das outras.",
                     Capa = "capas/misterio_cinco_estrelas.jpg",
-                    GeneroId = 1,
+                    GeneroId = 5,
                     ClassificacaoIndicativaId = 4 // 8–9 anos
                 },
                 new Livro
                 {
                     Id = 4,
-                    Titulo = "O Tesouro da Ilha",
+                    Titulo = "O tesouro da raposa",
                     Autor = "Ana Maria Machado",
-                    Descricao = "Aventura de crianças em busca de um tesouro, aprendendo sobre coragem e trabalho em equipe.",
+                    Descricao = "A simpática Raposa revelou a Mico Maneco que tem um tesouro. Curioso, Maneco faz de tudo para descobrir onde se esconde tanta riqueza.",
                     Capa = "capas/tesouro_da_ilha.jpg",
                     GeneroId = 1,
                     ClassificacaoIndicativaId = 3 // 6–7 anos
@@ -67,19 +67,19 @@ namespace Leiturinha.Data
                 new Livro
                 {
                     Id = 5,
-                    Titulo = "O Segredo do Sótão",
+                    Titulo = "A cesta de dona Maricota",
                     Autor = "Tatiana Belinky",
-                    Descricao = "História cheia de mistérios que estimula a curiosidade e imaginação.",
+                    Descricao = "Em deliciosos versos e rimas, os alimentos que compõem a cesta de Dona Maricota chegam da feira e iniciam uma gostosa provocação, enumerando as vantagens nutritivas de se comer, verduras, frutas e legumes.Indicado para os anos iniciais do Ensino Fundamental 1º ano e 2º ano, com trabalho interdisciplinar: Ciências da Natureza.",
                     Capa = "capas/segredo_sotao.jpg",
                     GeneroId = 1,
-                    ClassificacaoIndicativaId = 4 // 8–9 anos
+                    ClassificacaoIndicativaId = 3 // 8–9 anos
                 },
                 new Livro
                 {
                     Id = 6,
-                    Titulo = "Aventuras de Gui e Lili",
+                    Titulo = "A ursinha que não queria dormir sozinha",
                     Autor = "Emília Nuñez",
-                    Descricao = "Duas crianças enfrentam desafios e aventuras, aprendendo valores importantes.",
+                    Descricao = "Dormir na cama dos pais é uma delícia! Mas os pequenos crescem e chega o momento de dormir na sua própria caminha. Nesta história, Ursita e sua família encontram juntos a confiança para que a filhotinha durma sozinha e tenha sonhos tranquilos!",
                     Capa = "capas/aventuras_gui_lili.jpg",
                     GeneroId = 1,
                     ClassificacaoIndicativaId = 2 // 3–5 anos
@@ -87,9 +87,9 @@ namespace Leiturinha.Data
                 new Livro
                 {
                     Id = 7,
-                    Titulo = "O Mistério do Livro Perdido",
+                    Titulo = "O reizinho mandão",
                     Autor = "Ruth Rocha",
-                    Descricao = "Crianças descobrem segredos e resolvem mistérios em uma biblioteca antiga.",
+                    Descricao = "Um reizinho mandão (que no fundo era um menino mal-educado e mimado) mandava todo mundo calar a boca. De medo, as pessoas calavam. E calaram tanto que esqueceram como falar. Sério, ninguém mais no reino sabia dizer nada.O reizinho ficou culpado e triste (porque imaginem que chato um lugar onde é impossível conversar...) e foi atrás de um sábio que vivia no reino vizinho para ver se ele tinha algum conselho, alguma ideia sobre o que fazer para que as coisas voltassem ao normal. O sábio disse que ele teria que bater de porta em porta até encontrar uma criança que ainda lembrasse como se fala. E lá foi o reizinho mandão, de casa em casa, sem saber se aquilo ia dar certo...Um dos três livros que escreveu sobre reis (os outros dois são Sapo vira rei vira sapo e O rei que não sabia de nada), em O reizinho mandão a Ruth Rocha aborda ― com a graça que é parte do seu estilo, mas também com seriedade ― temas caros à história brasileira das últimas décadas, como democracia, poder e liberdade.",
                     Capa = "capas/misterio_livro_perdido.jpg",
                     GeneroId = 1,
                     ClassificacaoIndicativaId = 5 // 10–12 anos
@@ -97,9 +97,9 @@ namespace Leiturinha.Data
                 new Livro
                 {
                     Id = 8,
-                    Titulo = "As Aventuras de Nino",
-                    Autor = "Odilon Moraes",
-                    Descricao = "Histórias de Nino enfrentando desafios e explorando novos mundos.",
+                    Titulo = "As Aventuras do Nino - Volume 1: Nino Aprende a Esperar & Nino e o Som Misterioso & Nino e o Tesouro Esquecido",
+                    Autor = "Joana Bragança ",
+                    Descricao = "Nino Aprende a Esperar, Nino e o Som Misterioso e Nino e o Tesouro Esquecido são três histórias ilustradas e encantadoras que acompanham o esquilo Nino enquanto descobre valores importantes como a paciência, a coragem e a honestidade.\r\nIdeal para crianças dos 3 aos 7 anos, este livro incentiva o diálogo sobre emoções e atitudes positivas, num universo mágico, colorido e cheio de ternura.",
                     Capa = "capas/aventuras_nino.jpg",
                     GeneroId = 1,
                     ClassificacaoIndicativaId = 3 // 6–7 anos
@@ -107,9 +107,9 @@ namespace Leiturinha.Data
                 new Livro
                 {
                     Id = 9,
-                    Titulo = "O Tesouro do Bairro",
+                    Titulo = "Menina bonita do laço de fita",
                     Autor = "Ana Maria Machado",
-                    Descricao = "Crianças do bairro descobrem um tesouro escondido e aprendem sobre amizade e ética.",
+                    Descricao = "Uma linda menina negra desperta a admiração de um coelho branco, que deseja ter uma filha tão pretinha quanto ela. Cada vez que ele lhe pergunta qual o segredo de sua cor, ela inventa uma história. O coelho segue todos os “conselhos” da menina, mas continua branco. Esta narrativa delicada e tocante aborda temas como autoaceitação, respeito às diferenças e a beleza da diversidade. Com ilustrações encantadoras e uma mensagem poderosa, o livro convida os leitores a refletir sobre a importância de valorizar a singularidade de cada pessoa, independentemente de sua cor de pele.",
                     Capa = "capas/tesouro_bairro.jpg",
                     GeneroId = 1,
                     ClassificacaoIndicativaId = 4 // 8–9 anos
@@ -117,12 +117,12 @@ namespace Leiturinha.Data
                 new Livro
                 {
                     Id = 10,
-                    Titulo = "Viagem ao Mundo da Imaginação",
+                    Titulo = "Meu Amigo, o Canguru",
                     Autor = "Ziraldo",
-                    Descricao = "Menino explora mundos fantásticos, estimulando criatividade e imaginação.",
+                    Descricao = "Ziraldo relembra sua infância. Na enciclopédia, entre o A e o F, ele encontrou a figura de um canguru. Foi amor à primeira vista. Gugu foi seu amigo de infância, de sonhos e fantasias, de ternura e aconchego. Ziraldo cresceu, tornou-se escritor, desenhista, artista, e o canguru, sempre à vista.",
                     Capa = "capas/viagem_imaginacao.jpg",
                     GeneroId = 1,
-                    ClassificacaoIndicativaId = 5 // 10–12 anos
+                    ClassificacaoIndicativaId = 4 // 10–12 anos
                 },
 
             //Livros de Conto de Fadas
