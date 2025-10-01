@@ -1,5 +1,6 @@
 ﻿using Leiturinha.Models;
 using System.Security.Cryptography.Xml;
+using Microsoft.EntityFrameworkCore;
 
 namespace Leiturinha.Data
 {
@@ -29,8 +30,8 @@ namespace Leiturinha.Data
                    Id = 1,
                    Titulo = "O Menino Maluquinho",
                    Autor = "Ziraldo",
-                   Descricao = "Um menininho traquinas, diziam. Tinha macaquinhos no sótão, deitava e rolava, fazendo confusão. Um anjinho, um saci? Alegria da casa, liderava a garotada. Namorador, fazia versinhos, compunha canções, inventava brincadeiras. Era sabido, um amigão. “Menino Maluquinho”, diziam sorrindo as pessoas. Não era, não! Só mais tarde descobriram que tinha sido um garotinho muito amado e, por isso mesmo, muito feliz.",
-                   Capa = "capas/o_menino_maluquinho.jpg",
+                   Descricao = "Um garoto cheio de energia e criatividade, o Menino Maluquinho vive aprontando travessuras, inventando brincadeiras e alegrando todos ao redor. Entre versinhos, canções e confusões, ele mostra que ser feliz é estar cercado de amigos e amor.",
+                   Capa = "~/img/1/o-menino-maluquinho1.jpg",
                    GeneroId = 1, // Aventura
                    ClassificacaoIndicativaId = 2 // 3–5 anos
                },
@@ -39,7 +40,7 @@ namespace Leiturinha.Data
                     Id = 2,
                     Titulo = "Maluquinho de família",
                     Autor = "Ziraldo",
-                    Descricao = "Tudo começa com um trabalho escolar. A professora pede uma pesquisa sobre a família real do Brasil e a turma se diverte revelando suas origens: Julieta garante descender de uma linhagem de artistas, enquanto Junim lembra que seus ancestrais eram do circo. Mas o Menino Maluquinho, personagem criado por Ziraldo, não sabe nada sobre sua árvore genealógica. A partir desse instigante ponto de partida, o autor desenvolve uma aventura baseada no álbum de fotos antigas que o avô do Maluquinho guarda com carinho. Nesta divertida história em quadrinhos as lembranças narradas pelo avô e pelos pais do menino promovem o encontro afetivo dele com o passado. Da infância do bisavô até os tempos recentes, o garoto ouve com atenção e se diverte com a sucessão de memórias familiares, e conclui que a maluquice está em seu DNA. O lançamento do livro Maluquinho de família acontece durante a 16ª Bienal do Livro do Rio de Janeiro – de 29 de agosto a 8 de setembro –, evento que terá Ziraldo como grande homenageado. Segundo os organizadores, o autor é uma presença constante em todas as bienais por “aproximar a garotada do mundo dos livros”.",
+                    Descricao = "Tudo começa com um trabalho escolar: a professora pede uma pesquisa sobre a família real do Brasil. A turma se diverte revelando suas origens, mas o Menino Maluquinho não sabe nada sobre sua árvore genealógica. A partir daí, ele embarca numa aventura com o álbum de fotos antigas do avô, descobrindo memórias familiares e percebendo que a maluquice está em seu DNA.",
                     Capa = "capas/o_menino_maluquinho_arvore.jpg",
                     GeneroId = 1,
                     ClassificacaoIndicativaId = 3 // 6–7 anos
