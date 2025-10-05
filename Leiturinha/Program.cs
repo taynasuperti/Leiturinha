@@ -1,4 +1,5 @@
 using Leiturinha.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,8 +9,6 @@ builder.Services.AddControllersWithViews();
 //adicionando o contexto do banco de dados ao contêiner de serviços
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-
 
 var app = builder.Build();
 

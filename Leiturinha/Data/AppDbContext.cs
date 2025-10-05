@@ -1,4 +1,5 @@
 ﻿using Leiturinha.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Leiturinha.Data
 {
