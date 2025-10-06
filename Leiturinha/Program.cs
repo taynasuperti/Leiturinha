@@ -3,14 +3,16 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
 //adicionando o contexto do banco de dados ao contêiner de serviços
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+string conexao = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<AppDbContext>(
+    options => options.UseSqlServer(conexao)
+);
 
 var app = builder.Build();
+ 
+// Add services to the container.
+builder.Services.AddControllersWithViews();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

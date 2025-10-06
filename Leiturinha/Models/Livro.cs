@@ -23,6 +23,8 @@ namespace Leiturinha.Models
         [Required]
         public string Capa { get; set; } = string.Empty;
 
+        public bool Destaque { get; set; } = false;
+
         //montando o relacionamento entre as tabelas
         [Required]
         public int GeneroId { get; set; }

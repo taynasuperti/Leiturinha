@@ -1,20 +1,37 @@
 ﻿using Leiturinha.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Leiturinha.Data
 {
-    public class AppDbContext : DbContext //herdando a classe DbContext
+    public class AppDbContext : IdentityDbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-        public DbSet<Livro> Livros { get; set; } //representa a tabela Livros no banco de dados
-        public DbSet<Genero> Generos { get; set; } //representa a tabela Generos no banco de dados
-        public DbSet<ClassificacaoIndicativa> Classificacoes { get; set; }
-        public DbSet<Avaliacao> Avaliacoes { get; set; } //representa a tabela Avaliacoes no banco de dados
-        public DbSet<Comentario> Comentarios { get; set; } //representa a tabela Comentarios no banco de dados
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-            AppDbSeed.Seed(modelBuilder); //chamando o método Seed da classe AppDbSeed para popular o banco de dados com dados iniciais
+        }
+
+        public DbSet<Livro> Livros { get; set; }
+        public DbSet<Genero> Generos { get; set; }
+        public DbSet<ClassificacaoIndicativa> Classificacoes { get; set; }
+        public DbSet<Avaliacao> Avaliacoes { get; set; }
+        public DbSet<Comentario> Comentarios { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            // Renomeando tabelas padrão do Identity para nomes mais amigáveis
+            builder.Entity<IdentityUser>().ToTable("Usuario");
+            builder.Entity<IdentityRole>().ToTable("Perfil");
+            builder.Entity<IdentityUserRole<string>>().ToTable("UsuarioPerfil");
+            builder.Entity<IdentityUserClaim<string>>().ToTable("UsuarioRegras");
+            builder.Entity<IdentityUserToken<string>>().ToTable("UsuarioToken");
+            builder.Entity<IdentityUserLogin<string>>().ToTable("UsuarioLogin");
+            builder.Entity<IdentityRoleClaim<string>>().ToTable("PerfilRegras");
+
+            // Dados iniciais
+            AppDbSeed.Seed(builder);
         }
     }
 }
