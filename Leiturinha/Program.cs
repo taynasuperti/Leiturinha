@@ -1,24 +1,27 @@
-using Leiturinha.Data;
+﻿using Leiturinha.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//adicionando o contexto do banco de dados ao cont�iner de servi�os
+// Adicionando o contexto do banco de dados ao contêiner de serviços
 string conexao = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<AppDbContext>(
-    options => options.UseSqlServer(conexao)
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(conexao)
 );
 
-var app = builder.Build();
- 
-// Add services to the container.
+// Adicione os serviços do Blazor e Razor Pages
+builder.Services.AddRazorPages();
+builder.Services.AddServerSideBlazor();
+
+// Se precisar de controllers (API ou MVC)
 builder.Services.AddControllersWithViews();
 
-// Configure the HTTP request pipeline.
+var app = builder.Build();
+
+// Configure o pipeline HTTP
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -32,5 +35,9 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+// Se for Blazor Server
+app.MapBlazorHub();
+app.MapFallbackToPage("/_Host");
 
 app.Run();
