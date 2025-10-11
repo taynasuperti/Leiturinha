@@ -9,7 +9,7 @@ namespace Leiturinha.Models
         public int Id { get; set; }
 
         [Required]
-        [StringLength(100)]
+        [StringLength(400)]
         public string Titulo { get; set; } = string.Empty; //para começar como nula
 
         [Required]
@@ -17,7 +17,7 @@ namespace Leiturinha.Models
         public string Autor { get; set; } = string.Empty; //para começar como nula
 
         [Required]
-        [StringLength(800)]
+        [MaxLength(5000)]
         public string Descricao { get; set; } = string.Empty;
 
         [Required]

@@ -30,7 +30,7 @@ namespace Leiturinha.Data
                    Id = 1,
                    Titulo = "O Menino Maluquinho",
                    Autor = "Ziraldo",
-                   Descricao = "Um garoto cheio de energia e criatividade, o Menino Maluquinho vive aprontando travessuras, inventando brincadeiras e alegrando todos ao redor. Entre versinhos, canções e confusões, ele mostra que ser feliz é estar cercado de amigos e amor.",
+                   Descricao = "O Menino Maluquinho é um garoto alegre, criativo e cheio de energia. Com suas travessuras, brincadeiras e versinhos, ele espalha diversão por onde passa e mostra que a verdadeira felicidade está na amizade e no amor.",
                    Capa = "~/img/1/o-menino-maluquinho1.jpg",
                    GeneroId = 1, // Aventura
                    ClassificacaoIndicativaId = 2 // 3–5 anos
@@ -40,7 +40,7 @@ namespace Leiturinha.Data
                     Id = 2,
                     Titulo = "Maluquinho de família",
                     Autor = "Ziraldo",
-                    Descricao = "Tudo começa com um trabalho escolar: a professora pede uma pesquisa sobre a família real do Brasil. A turma se diverte revelando suas origens, mas o Menino Maluquinho não sabe nada sobre sua árvore genealógica. A partir daí, ele embarca numa aventura com o álbum de fotos antigas do avô, descobrindo memórias familiares e percebendo que a maluquice está em seu DNA.",
+                    Descricao = "Ao investigar suas origens para um trabalho escolar sobre a família real do Brasil, o Menino Maluquinho percebe que não sabe nada sobre sua genealogia. Com a ajuda do álbum de fotos antigas do avô, ele embarca numa divertida jornada pelas memórias da família e descobre que a maluquice é uma herança de sangue.",
                     Capa = "~/img/2/maluquinho-de-familia1.jpg",
                     GeneroId = 1,
                     ClassificacaoIndicativaId = 3 // 6–7 anos
@@ -50,7 +50,7 @@ namespace Leiturinha.Data
                     Id = 3,
                     Titulo = "Como ser Amigo: um Livro Sobre Amizade",
                     Autor = "Molly Wigand",
-                    Descricao = "Em Como ser amigo - Um livro sobre amizade... Feito pra mim!, a autora Molly Wigand apresenta às crianças os valores que ajudam a construir boas amizades: lealdade, verdade e honestidade. E como as crianças podem se tornar boas amigas umas das outras.",
+                    Descricao = "Neste livro, Molly Wigand ensina às crianças os pilares de uma boa amizade — lealdade, verdade e honestidade — e mostra, de forma acessível e carinhosa, como elas podem cultivar relações saudáveis e se tornar ótimos amigos.",
                     Capa = "~/img/3/como-ser-amigo1.jpg",
                     GeneroId = 5,
                     ClassificacaoIndicativaId = 4 // 8–9 anos
@@ -70,7 +70,7 @@ namespace Leiturinha.Data
                     Id = 5,
                     Titulo = "A cesta de dona Maricota",
                     Autor = "Tatiana Belinky",
-                    Descricao = "Em deliciosos versos e rimas, os alimentos que compõem a cesta de Dona Maricota chegam da feira e iniciam uma gostosa provocação, enumerando as vantagens nutritivas de se comer, verduras, frutas e legumes.Indicado para os anos iniciais do Ensino Fundamental 1º ano e 2º ano, com trabalho interdisciplinar: Ciências da Natureza.",
+                    Descricao = "Por meio de versos e rimas divertidas, os alimentos da cesta de Dona Maricota ganham vida e destacam os benefícios de uma alimentação saudável com frutas, verduras e legumes. Ideal para crianças do 1º e 2º ano do Ensino Fundamental, o livro promove o aprendizado interdisciplinar com foco em Ciências da Natureza.",
                     Capa = "~/img/5/a-cesta-da-dona-maricota1.jpg",
                     GeneroId = 1,
                     ClassificacaoIndicativaId = 3 // 8–9 anos
@@ -80,7 +80,7 @@ namespace Leiturinha.Data
                     Id = 6,
                     Titulo = "A ursinha que não queria dormir sozinha",
                     Autor = "Emília Nuñez",
-                    Descricao = "Dormir na cama dos pais é uma delícia! Mas os pequenos crescem e chega o momento de dormir na sua própria caminha. Nesta história, Ursita e sua família encontram juntos a confiança para que a filhotinha durma sozinha e tenha sonhos tranquilos!",
+                    Descricao = "A história acompanha Ursita, uma filhotinha que adora dormir na cama dos pais. Com carinho e apoio da família, ela aprende a ter confiança para dormir sozinha em sua própria caminha, descobrindo que sonhos tranquilos também podem acontecer ali.",
                     Capa = "~/img/6/a-ursinha-que-nao-dormia-sozinha1.jpg",
                     GeneroId = 1,
                     ClassificacaoIndicativaId = 2 // 3–5 anos
@@ -88,9 +88,9 @@ namespace Leiturinha.Data
                 new Livro
                 {
                     Id = 7,
-                    Titulo = "O reizinho mandão",
-                    Autor = "Ruth Rocha",
-                    Descricao = "Um reizinho mandão (que no fundo era um menino mal-educado e mimado) mandava todo mundo calar a boca. De medo, as pessoas calavam. E calaram tanto que esqueceram como falar. Sério, ninguém mais no reino sabia dizer nada.O reizinho ficou culpado e triste (porque imaginem que chato um lugar onde é impossível conversar...) e foi atrás de um sábio que vivia no reino vizinho para ver se ele tinha algum conselho, alguma ideia sobre o que fazer para que as coisas voltassem ao normal. O sábio disse que ele teria que bater de porta em porta até encontrar uma criança que ainda lembrasse como se fala. E lá foi o reizinho mandão, de casa em casa, sem saber se aquilo ia dar certo...Um dos três livros que escreveu sobre reis (os outros dois são Sapo vira rei vira sapo e O rei que não sabia de nada), em O reizinho mandão a Ruth Rocha aborda ― com a graça que é parte do seu estilo, mas também com seriedade ― temas caros à história brasileira das últimas décadas, como democracia, poder e liberdade.",
+                    Titulo = "Coraline",
+                    Autor = " Neil Gaiman",
+                    Descricao = "Ao se mudar para uma casa antiga com os pais, Coraline descobre uma porta secreta que a leva a um mundo paralelo. Lá, tudo parece perfeito: seus \"outros pais\" são atenciosos e o ambiente é encantador. Mas logo ela percebe que esse universo esconde perigos sombrios, e retornar à sua verdadeira casa será uma jornada assustadora e desafiadora.",
                     Capa = "~/img/7/o-reizinho-mandao1.jpg",
                     GeneroId = 1,
                     ClassificacaoIndicativaId = 5 // 10–12 anos
