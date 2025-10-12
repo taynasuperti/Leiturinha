@@ -91,7 +91,7 @@ namespace Leiturinha.Data
                     Titulo = "Coraline",
                     Autor = " Neil Gaiman",
                     Descricao = "Ao se mudar para uma casa antiga com os pais, Coraline descobre uma porta secreta que a leva a um mundo paralelo. Lá, tudo parece perfeito: seus \"outros pais\" são atenciosos e o ambiente é encantador. Mas logo ela percebe que esse universo esconde perigos sombrios, e retornar à sua verdadeira casa será uma jornada assustadora e desafiadora.",
-                    Capa = "~/img/7/o-reizinho-mandao1.jpg",
+                    Capa = "~/img/7/coraline1.jpg",
                     GeneroId = 1,
                     ClassificacaoIndicativaId = 5 // 10–12 anos
                 },
@@ -539,143 +539,144 @@ namespace Leiturinha.Data
                 new ImagemLivro { Id = 1, LivroId = 1, CaminhoImagem = "~/img/1/o-menino-maluquinho2.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 2 - Maluquinho de família
-                new ImagemLivro { Id = 2, LivroId = 2, CaminhoImagem = "~/img/2/maluquinho-de-familia2.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 2, LivroId = 2, CaminhoImagem = "~/img/2/maluquinho-de-familia2.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 3 - Como Ser Amigo
-                new ImagemLivro { Id = 3, LivroId = 3, CaminhoImagem = "~/img/3/como-ser-amigo2.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 3, LivroId = 3, CaminhoImagem = "~/img/3/como-ser-amigo2.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 4 - O Tesouro da Raposa
-                new ImagemLivro { Id = 4, LivroId = 4, CaminhoImagem = "~/img/4/o-tesouro-da-raposa2.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 4, LivroId = 4, CaminhoImagem = "~/img/4/o-tesouro-da-raposa2.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 5 - A cesta da dona Maricota
-                new ImagemLivro { Id = 5, LivroId = 5, CaminhoImagem = "~/img/5/a-cesta-da-dona-maricota2.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 6, LivroId = 5, CaminhoImagem = "~/img/5/a-cesta-da-dona-maricota3.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 5, LivroId = 5, CaminhoImagem = "~/img/5/a-cesta-da-dona-maricota2.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 6, LivroId = 5, CaminhoImagem = "~/img/5/a-cesta-da-dona-maricota3.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 6 - A ursinha que não dormia sozinha
-                new ImagemLivro { Id = 7, LivroId = 6, CaminhoImagem = "~/img/6/a-ursinha-que-nao-dormia-sozinha2.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 8, LivroId = 6, CaminhoImagem = "~/img/6/a-ursinha-que-nao-dormia-sozinha3.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 7, LivroId = 6, CaminhoImagem = "~/img/6/a-ursinha-que-nao-dormia-sozinha2.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 8, LivroId = 6, CaminhoImagem = "~/img/6/a-ursinha-que-nao-dormia-sozinha3.jpg", DescricaoFoto = "Foto adicional" },
 
-                // Livro 7 - O reizinho mandão
-                new ImagemLivro { Id = 9, LivroId = 7, CaminhoImagem = "~/img/7/o-reizinho-mandao2.jpg", DescricaoFoto = "Contra capa" },
+                // Livro 7 - Coraline
+                new ImagemLivro { Id = 9, LivroId = 7, CaminhoImagem = "~/img/7/coraline2.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 10, LivroId = 7, CaminhoImagem = "~/img/7/coraline3.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 8 - As aventuras de Nino
-                new ImagemLivro { Id = 10, LivroId = 8, CaminhoImagem = "~/img/8/as-aventuras-de-nino2.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 11, LivroId = 8, CaminhoImagem = "~/img/8/as-aventuras-de-nino2.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 9 - Menina bonita do laço de fita
-                new ImagemLivro { Id = 11, LivroId = 9, CaminhoImagem = "~/img/9/menina-bonita-do-laco-de-fita2.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 12, LivroId = 9, CaminhoImagem = "~/img/9/menina-bonita-do-laco-de-fita3.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 13, LivroId = 9, CaminhoImagem = "~/img/9/menina-bonita-do-laco-de-fita4.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 12, LivroId = 9, CaminhoImagem = "~/img/9/menina-bonita-do-laco-de-fita2.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 13, LivroId = 9, CaminhoImagem = "~/img/9/menina-bonita-do-laco-de-fita3.jpg", DescricaoFoto = "Foto adicional   " },
+                new ImagemLivro { Id = 14, LivroId = 9, CaminhoImagem = "~/img/9/menina-bonita-do-laco-de-fita4.jpg", DescricaoFoto  = "Foto adicional" },
 
                 // Livro 12 - O pedido da fada madrinha
-                new ImagemLivro { Id = 14, LivroId = 12, CaminhoImagem = "~/img/12/o-pedido-da-fada-madrinha2.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 15, LivroId = 12, CaminhoImagem = "~/img/12/o-pedido-da-fada-madrinha3.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 16, LivroId = 12, CaminhoImagem = "~/img/12/o-pedido-da-fada-madrinha4.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 15, LivroId = 12, CaminhoImagem = "~/img/12/o-pedido-da-fada-madrinha2.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 16, LivroId = 12, CaminhoImagem = "~/img/12/o-pedido-da-fada-madrinha3.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 17, LivroId = 12, CaminhoImagem = "~/img/12/o-pedido-da-fada-madrinha4.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 13 - Chapeuzinho Vermelho
-                new ImagemLivro { Id = 17, LivroId = 13, CaminhoImagem = "~/img/13/chapeuzinho-vermelho2.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 18, LivroId = 13, CaminhoImagem = "~/img/13/chapeuzinho-vermelho3.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 18, LivroId = 13, CaminhoImagem = "~/img/13/chapeuzinho-vermelho2.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 19, LivroId = 13, CaminhoImagem = "~/img/13/chapeuzinho-vermelho3.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 15 - A primavera da largarta
-                new ImagemLivro { Id = 19, LivroId = 15, CaminhoImagem = "~/img/15/a-primaveira-da-lagarta2.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 20, LivroId = 15, CaminhoImagem = "~/img/15/a-primaveira-da-lagarta2.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 16 - João e o pé de feijão
-                new ImagemLivro { Id = 20, LivroId = 16, CaminhoImagem = "~/img/16/joao-e-o-pe-de-feijao2.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 21, LivroId = 16, CaminhoImagem = "~/img/16/joao-e-o-pe-de-feijao3.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 22, LivroId = 16, CaminhoImagem = "~/img/16/joao-e-o-pe-de-feijao4.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 21, LivroId = 16, CaminhoImagem = "~/img/16/joao-e-o-pe-de-feijao2.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 22, LivroId = 16, CaminhoImagem = "~/img/16/joao-e-o-pe-de-feijao3.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 23, LivroId = 16, CaminhoImagem = "~/img/16/joao-e-o-pe-de-feijao4.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 17 - Os três porquinhos
-                new ImagemLivro { Id = 23, LivroId = 17, CaminhoImagem = "~/img/17/os-tres-porquinhos2.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 24, LivroId = 17, CaminhoImagem = "~/img/17/os-tres-porquinhos3.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 25, LivroId = 17, CaminhoImagem = "~/img/17/os-tres-porquinhos4.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 24, LivroId = 17, CaminhoImagem = "~/img/17/os-tres-porquinhos2.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 25, LivroId = 17, CaminhoImagem = "~/img/17/os-tres-porquinhos3.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 26, LivroId = 17, CaminhoImagem = "~/img/17/os-tres-porquinhos4.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 18 - O pequenho príncipe
-                new ImagemLivro { Id = 26, LivroId = 18, CaminhoImagem = "~/img/18/o-pequeno-principe2.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 27, LivroId = 18, CaminhoImagem = "~/img/18/o-pequeno-principe3.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 27, LivroId = 18, CaminhoImagem = "~/img/18/o-pequeno-principe2.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 28, LivroId = 18, CaminhoImagem = "~/img/18/o-pequeno-principe3.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 19 - O patinho feio
-                new ImagemLivro { Id = 28, LivroId = 19, CaminhoImagem = "~/img/19/o-patinho-feio2.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 29, LivroId = 19, CaminhoImagem = "~/img/19/o-patinho-feio2.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 21 - A cigarra e a formiga
-                new ImagemLivro { Id = 29, LivroId = 21, CaminhoImagem = "~/img/21/a-cigarra-e-a-formiga2.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 30, LivroId = 21, CaminhoImagem = "~/img/21/a-cigarra-e-a-formiga2.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 23 - A lebre e a tartaruga
-                new ImagemLivro { Id = 30, LivroId = 23, CaminhoImagem = "~/img/23/a-lebre-e-a-tartaruga2.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 31, LivroId = 23, CaminhoImagem = "~/img/23/a-lebre-e-a-tartaruga3.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 31, LivroId = 23, CaminhoImagem = "~/img/23/a-lebre-e-a-tartaruga2.jpg", DescricaoFoto = "Foto adicional " },
+                new ImagemLivro { Id = 32, LivroId = 23, CaminhoImagem = "~/img/23/a-lebre-e-a-tartaruga3.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 24 - Fabulas de Esopo
-                new ImagemLivro { Id = 32, LivroId = 24, CaminhoImagem = "~/img/24/fabulas-de-escopo2.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 33, LivroId = 24, CaminhoImagem = "~/img/24/fabulas-de-escopo2.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 25 - Perigoso contem coelhos
-                new ImagemLivro { Id = 33, LivroId = 25, CaminhoImagem = "~/img/25/perigoso-contem-coelhos2.jpg", DescricaoFoto = "Contra capa" },
-                 new ImagemLivro { Id = 34, LivroId = 25, CaminhoImagem = "~/img/25/perigoso-contem-coelhos3.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 34, LivroId = 25, CaminhoImagem = "~/img/25/perigoso-contem-coelhos2.jpg", DescricaoFoto = "Foto adicional" },
+                 new ImagemLivro { Id = 35, LivroId = 25, CaminhoImagem = "~/img/25/perigoso-contem-coelhos3.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 27 - A raposa e as uvas
-                new ImagemLivro { Id = 35, LivroId = 27, CaminhoImagem = "~/img/27/a-raposa-e-as-uvas2.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 36, LivroId = 27, CaminhoImagem = "~/img/27/a-raposa-e-as-uvas2.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 30 - Simão e o osso
-                new ImagemLivro { Id = 36, LivroId = 30, CaminhoImagem = "~/img/30/simao-e-o-osso2.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 37, LivroId = 30, CaminhoImagem = "~/img/30/simao-e-o-osso3.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 37, LivroId = 30, CaminhoImagem = "~/img/30/simao-e-o-osso2.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 38, LivroId = 30, CaminhoImagem = "~/img/30/simao-e-o-osso3.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 33 - Dragões de Terrazul
-                new ImagemLivro { Id = 38, LivroId = 33, CaminhoImagem = "~/img/33/dragoes-de-terrazul2.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 39, LivroId = 33, CaminhoImagem = "~/img/33/dragoes-de-terrazul3.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 40, LivroId = 33, CaminhoImagem = "~/img/33/dragoes-de-terrazul4.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 39, LivroId = 33, CaminhoImagem = "~/img/33/dragoes-de-terrazul2.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 40, LivroId = 33, CaminhoImagem = "~/img/33/dragoes-de-terrazul3.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 41, LivroId = 33, CaminhoImagem = "~/img/33/dragoes-de-terrazul4.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 34 - Chorar é como Chover
-                new ImagemLivro { Id = 41, LivroId = 34, CaminhoImagem = "~/img/34/chorar-e-como-chover2.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 42, LivroId = 34, CaminhoImagem = "~/img/34/chorar-e-como-chover3.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 43, LivroId = 34, CaminhoImagem = "~/img/34/chorar-e-como-chover4.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 42, LivroId = 34, CaminhoImagem = "~/img/34/chorar-e-como-chover2.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 43, LivroId = 34, CaminhoImagem = "~/img/34/chorar-e-como-chover3.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 44, LivroId = 34, CaminhoImagem = "~/img/34/chorar-e-como-chover4.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 35 - Acreditar
-                new ImagemLivro { Id = 44, LivroId = 35, CaminhoImagem = "~/img/35/maluquinho-de-familia2.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 45, LivroId = 35, CaminhoImagem = "~/img/35/maluquinho-de-familia3.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 46, LivroId = 35, CaminhoImagem = "~/img/35/maluquinho-de-familia4.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 45, LivroId = 35, CaminhoImagem = "~/img/35/maluquinho-de-familia2.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 46, LivroId = 35, CaminhoImagem = "~/img/35/maluquinho-de-familia3.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 47, LivroId = 35, CaminhoImagem = "~/img/35/maluquinho-de-familia4.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 37 - Zumbi.net
-                new ImagemLivro { Id = 47, LivroId = 37, CaminhoImagem = "~/img/37/zumbi-net2.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 48, LivroId = 37, CaminhoImagem = "~/img/37/zumbi-net3.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 48, LivroId = 37, CaminhoImagem = "~/img/37/zumbi-net2.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 49, LivroId = 37, CaminhoImagem = "~/img/37/zumbi-net3.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 38 - Gildo
-                new ImagemLivro { Id = 49, LivroId = 38, CaminhoImagem = "~/img/38/gildo2.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 50, LivroId = 38, CaminhoImagem = "~/img/38/gildo2.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 39 - O reino do tempo
-                new ImagemLivro { Id = 50, LivroId = 39, CaminhoImagem = "~/img/39/o-reino-do-tempo2.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 51, LivroId = 39, CaminhoImagem = "~/img/39/o-reino-do-tempo2.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 40 - Alice no País das Maravilhas
-                new ImagemLivro { Id = 51, LivroId = 40, CaminhoImagem = "~/img/40/alice-no-pais-das-maravilhas2.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 52, LivroId = 40, CaminhoImagem = "~/img/40/alice-no-pais-das-maravilhas3.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 53, LivroId = 40, CaminhoImagem = "~/img/40/alice-no-pais-das-maravilhas4.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 52, LivroId = 40, CaminhoImagem = "~/img/40/alice-no-pais-das-maravilhas2.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 53, LivroId = 40, CaminhoImagem = "~/img/40/alice-no-pais-das-maravilhas3.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 54, LivroId = 40, CaminhoImagem = "~/img/40/alice-no-pais-das-maravilhas4.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 41 - A arca de noe
-                new ImagemLivro { Id = 54, LivroId = 41, CaminhoImagem = "~/img/41/a-arca-de-noe2.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 55, LivroId = 41, CaminhoImagem = "~/img/41/a-arca-de-noe2.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 42 - O som do rugido da onça
-                new ImagemLivro { Id = 55, LivroId = 42, CaminhoImagem = "~/img/42/som-do-rugido-da-onca2.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 56, LivroId = 42, CaminhoImagem = "~/img/42/som-do-rugido-da-onca3.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 57, LivroId = 42, CaminhoImagem = "~/img/42/som-do-rugido-da-onca4.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 56, LivroId = 42, CaminhoImagem = "~/img/42/som-do-rugido-da-onca2.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 57, LivroId = 42, CaminhoImagem = "~/img/42/som-do-rugido-da-onca3.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 58, LivroId = 42, CaminhoImagem = "~/img/42/som-do-rugido-da-onca4.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 43 - Cantigas de roda
-                new ImagemLivro { Id = 58, LivroId = 43, CaminhoImagem = "~/img/43/cantigas-de-roda3.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 59, LivroId = 43, CaminhoImagem = "~/img/43/cantigas-de-roda3.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 44 - Mas que festa
-                new ImagemLivro { Id = 59, LivroId = 44, CaminhoImagem = "~/img/44/mas-que-festa2.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 60, LivroId = 44, CaminhoImagem = "~/img/44/mas-que-festa3.jpg", DescricaoFoto = "Contra capa" },
-                new ImagemLivro { Id = 61, LivroId = 44, CaminhoImagem = "~/img/44/mas-que-festa4.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 60, LivroId = 44, CaminhoImagem = "~/img/44/mas-que-festa2.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 61, LivroId = 44, CaminhoImagem = "~/img/44/mas-que-festa3.jpg", DescricaoFoto = "Foto adicional" },
+                new ImagemLivro { Id = 62, LivroId = 44, CaminhoImagem = "~/img/44/mas-que-festa4.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 45 - O caso dos ovos
-                new ImagemLivro { Id = 62, LivroId = 45, CaminhoImagem = "~/img/45/o-caso-dos-ovos2.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 63, LivroId = 45, CaminhoImagem = "~/img/45/o-caso-dos-ovos2.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 46 - Catigamamente
-                new ImagemLivro { Id = 63, LivroId = 46, CaminhoImagem = "~/img/46/catigamente2.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 64, LivroId = 46, CaminhoImagem = "~/img/46/catigamente2.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 47 - Versos mágicos
-                new ImagemLivro { Id = 64, LivroId = 47, CaminhoImagem = "~/img/47/versos-magicos2.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 65, LivroId = 47, CaminhoImagem = "~/img/47/versos-magicos2.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 48 - Poemas para brincar
-                new ImagemLivro { Id = 65, LivroId = 48, CaminhoImagem = "~/img/48/poemas-para-brincar2.jpg", DescricaoFoto = "Contra capa" },
+                new ImagemLivro { Id = 66, LivroId = 48, CaminhoImagem = "~/img/48/poemas-para-brincar2.jpg", DescricaoFoto = "Foto adicional" },
 
                 // Livro 50 - Maluquinho de família
-                new ImagemLivro { Id = 66, LivroId = 50, CaminhoImagem = "~/img/50/jardins2.jpg", DescricaoFoto = "Contra capa" }
+                new ImagemLivro { Id = 67, LivroId = 50, CaminhoImagem = "~/img/50/jardins2.jpg", DescricaoFoto = "Foto adicional" }
             );
         }
     }
