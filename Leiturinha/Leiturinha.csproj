@@ -57,6 +57,7 @@
     <Folder Include="wwwroot\img\48\" />
     <Folder Include="wwwroot\img\49\" />
     <Folder Include="wwwroot\img\50\" />
+    <Folder Include="wwwroot\img\header\" />
   </ItemGroup>
 
   <ItemGroup>

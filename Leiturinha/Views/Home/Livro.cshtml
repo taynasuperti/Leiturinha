@@ -1,0 +1,63 @@
+﻿@model Leiturinha.ViewModels.HomeVM
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<!-- Livro section -->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6">
+                @if (Model.Livro.Imagens.Count == 0)
+                {
+                    <img class="img-fluid mb-5 mb-md-0" src="~/img/produto-sem-imagem.jpg" alt="@Model.Livro.Titulo" />
+                }
+                else
+                {
+                    <img class="img-fluid mb-5 mb-md-0" src="@Model.Livro.Imagens[0].CaminhoImagem" alt="@Model.Livro.Titulo" />
+                }
+            </div>
+            <div class="col-md-6">
+                <div class="small mb-1">Gênero: @Model.Livro.Genero.Nome</div>
+                <h1 class="display-5 fw-bolder">@Model.Livro.Titulo</h1>
+                <div class="fs-5 mb-3">
+                    <span class="badge bg-secondary me-2">Classificação: @Model.Livro.ClassificacaoIndicativa.FaixaEtaria</span>
+                    <span class="badge bg-warning text-dark">Média: @Model.MediaEstrelas.ToString("N1") ⭐</span>
+                </div>
+                <p class="lead mb-4">@Model.Livro.Descricao</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Livros semelhantes -->
+<section class="py-5 bg-light">
+    <div class="container px-4 px-lg-5 mt-5">
+        <h2 class="fw-bolder mb-4">Você também pode gostar de</h2>
+        <div class="row gx-4 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            @foreach (var livro in Model.Semelhantes)
+            {
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        @if (livro.Imagens.Count > 0)
+                        {
+                            <img class="card-img-top" src="@livro.Imagens[0].CaminhoImagem" alt="@livro.Titulo" />
+                        }
+                        else
+                        {
+                            <img class="card-img-top" src="~/img/produto-sem-imagem.jpg" alt="@livro.Titulo" />
+                        }
+                        <div class="card-body p-4 text-center">
+                            <h5 class="fw-bolder">@livro.Titulo</h5>
+                            <p class="text-muted">@livro.Autor</p>
+                        </div>
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+                            <a class="btn btn-outline-dark mt-auto" asp-controller="Home" asp-action="Livro" asp-route-id="@livro.Id">Ver mais</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

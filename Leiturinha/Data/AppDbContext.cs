@@ -16,6 +16,7 @@ namespace Leiturinha.Data
         public DbSet<ClassificacaoIndicativa> Classificacoes { get; set; }
         public DbSet<Avaliacao> Avaliacoes { get; set; }
         public DbSet<Comentario> Comentarios { get; set; }
+        public DbSet<ImagemLivro> ImagemLivros { get; set; } 
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
