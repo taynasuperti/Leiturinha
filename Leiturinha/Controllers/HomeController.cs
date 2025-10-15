@@ -58,6 +58,7 @@ public class HomeController : Controller
             .Include(l => l.ClassificacaoIndicativa)
             .Include(l => l.Comentarios)
             .Include(l => l.Avaliacoes)
+            .Include(l => l.Imagens) 
             .SingleOrDefault(l => l.Id == id);
 
         if (livro == null)

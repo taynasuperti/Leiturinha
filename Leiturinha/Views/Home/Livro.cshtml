@@ -1,4 +1,4 @@
-﻿@model Leiturinha.ViewModels.HomeVM
+﻿@model Leiturinha.ViewModels.LivroVM
 @{
     ViewData["Title"] = "Detalhes";
 }
@@ -8,14 +8,15 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
             <div class="col-md-6">
-                @if (Model.Livro.Imagens.Count == 0)
+                @if (Model.Livro.Imagens != null && Model.Livro.Imagens.Any())
                 {
-                    <img class="img-fluid mb-5 mb-md-0" src="~/img/produto-sem-imagem.jpg" alt="@Model.Livro.Titulo" />
+                    <img class="img-fluid mb-5 mb-md-0" src="@Url.Content(Model.Livro.Imagens.First().CaminhoImagem)" alt="@Model.Livro.Titulo" />
                 }
                 else
                 {
-                    <img class="img-fluid mb-5 mb-md-0" src="@Model.Livro.Imagens[0].CaminhoImagem" alt="@Model.Livro.Titulo" />
+                    <img class="img-fluid mb-5 mb-md-0" src="@Url.Content("~/img/produto-sem-imagem.jpg")" alt="@Model.Livro.Titulo" />
                 }
+
             </div>
             <div class="col-md-6">
                 <div class="small mb-1">Gênero: @Model.Livro.Genero.Nome</div>
@@ -40,14 +41,15 @@
             {
                 <div class="col mb-5">
                     <div class="card h-100">
-                        @if (livro.Imagens.Count > 0)
+                        @if (livro.Imagens != null && livro.Imagens.Any())
                         {
-                            <img class="card-img-top" src="@livro.Imagens[0].CaminhoImagem" alt="@livro.Titulo" />
+                            <img class="card-img-top" src="@Url.Content(livro.Imagens.First().CaminhoImagem)" alt="@livro.Titulo" />
                         }
                         else
                         {
-                            <img class="card-img-top" src="~/img/produto-sem-imagem.jpg" alt="@livro.Titulo" />
+                            <img class="card-img-top" src="@Url.Content("~/img/produto-sem-imagem.jpg")" alt="@livro.Titulo" />
                         }
+
                         <div class="card-body p-4 text-center">
                             <h5 class="fw-bolder">@livro.Titulo</h5>
                             <p class="text-muted">@livro.Autor</p>
@@ -58,6 +60,8 @@
                     </div>
                 </div>
             }
+
+
         </div>
     </div>
 </section>

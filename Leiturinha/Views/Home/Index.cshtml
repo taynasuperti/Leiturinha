@@ -43,7 +43,15 @@
                     var livro = destaque.Livro;
                     <div class="col mb-5">
                         <div class="card border-0 bg-white shadow-sm h-100">
-                            <img class="card-img-top" src="@livro.Capa" alt="@livro.Titulo" />
+                            @if (!string.IsNullOrEmpty(livro.Capa))
+                            {
+                                <img class="card-img-top" src="@Url.Content(livro.Capa)" alt="@livro.Titulo" />
+                            }
+                            else
+                            {
+                                <img class="card-img-top" src="@Url.Content("~/img/produto-sem-imagem.jpg")" alt="@livro.Titulo" />
+                            }
+
                             <div class="card-body text-center">
                                 <h4 class="card-title">@livro.Titulo</h4>
                                 <p class="card-text">@livro.Descricao.Substring(0, Math.Min(120, livro.Descricao.Length))...</p>
@@ -71,6 +79,7 @@
             {
                 <h3 class="text-center">Nenhum livro em destaque no momento.</h3>
             }
+
         </div>
     </div>
 </section>
