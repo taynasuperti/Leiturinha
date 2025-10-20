@@ -1,7 +1,7 @@
 //esse arquivo serve para informar a versão que o sdk deve usar (já que eu tenho mais de uma instalada)
 
-//{
-//  "sdk": {
-//    "version": "8.0.411"
-//  }
-//}
+{
+  "sdk": {
+    "version": "8.0.411"
+  }
+}

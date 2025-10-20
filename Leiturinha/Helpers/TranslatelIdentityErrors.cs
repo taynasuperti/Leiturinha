@@ -2,6 +2,7 @@ namespace Leiturinha.Helpers;
 
 public static class TranslateIdentityErrors
 {
+    // armazena as mensagens de erro do Identity em portugues
     public static string TranslateErrorMessage(string codeError)
     {
         string message = codeError switch

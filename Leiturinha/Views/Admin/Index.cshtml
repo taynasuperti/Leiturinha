@@ -1,0 +1,85 @@
+@{
+    ViewData["Title"] = "Área Administrativa";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="jumbotron jumbotron-fluid pt-3">
+    <div class="container">
+        <h1 class="display-4">Área Administrativa</h1>
+        <p class="lead">Seja bem‑vindo Administrador! Utilize o menu lateral ou os cartões abaixo para acessar os cadastros do portal.</p>
+        <hr class="my-4">
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <a class="btn btn-dark p-0" asp-action="Index" asp-controller="Livros">
+                    <div class="card bg-danger text-white">
+                        <img src="~/img/1/o-menino-maluquinho1.jpg" class="w-100 rounded-top-2" alt="Livros">
+                        <div class="card-body">
+                            <h5 class="card-title">Livros</h5>
+                            <p class="card-text">Cadastrados: 31</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4">
+                <a class="btn btn-dark p-0" asp-action="Index" asp-controller="Generos">
+                    <div class="card bg-danger text-white">
+                        <img src="~/img/31/o-reino-das-cores.jpg" class="w-100 rounded-top-2" alt="Gêneros">
+                        <div class="card-body">
+                            <h5 class="card-title">Gêneros</h5>
+                            <p class="card-text">Cadastrados: 5</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4">
+                <a class="btn btn-dark p-0" asp-action="Index" asp-controller="Classificacoes">
+                    <div class="card bg-danger text-white">
+                        <img src="~/img/50/jardins1.jpg" class="w-100 rounded-top-2" alt="Classificações">
+                        <div class="card-body">
+                            <h5 class="card-title">Classificações</h5>
+                            <p class="card-text">Cadastradas: 5</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4">
+                <a class="btn btn-dark p-0" asp-action="Index" asp-controller="ImagemLivro">
+                    <div class="card bg-danger text-white">
+                        <img src="~/img/3/como-ser-amigo1.jpg" class="w-100 rounded-top-2" alt="Imagens">
+                        <div class="card-body">
+                            <h5 class="card-title">Imagens</h5>
+                            <p class="card-text">Cadastradas: 22</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4">
+                <a class="btn btn-dark p-0" asp-action="Index" asp-controller="Usuarios">
+                    <div class="card bg-danger text-white">
+                        <img src="~/img/usuarios/no-photo.png" class="w-100 rounded-top-2" alt="Usuários">
+                        <div class="card-body">
+                            <h5 class="card-title">Usuários</h5>
+                            <p class="card-text">Cadastrados: 3</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4">
+                <a class="btn btn-dark p-0" asp-action="Index" asp-controller="Avaliacoes">
+                    <div class="card bg-danger text-white">
+                        <img src="~/img/30/simao-e-o-osso1.jpg" class="w-100 rounded-top-2" alt="Avaliações">
+                        <div class="card-body">
+                            <h5 class="card-title">Avaliações</h5>
+                            <p class="card-text">Registradas: 0</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

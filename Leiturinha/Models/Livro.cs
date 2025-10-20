@@ -1,5 +1,4 @@
-﻿
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Leiturinha.Models
 {
@@ -8,33 +7,31 @@ namespace Leiturinha.Models
         //adicionando propriedades
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(400)]
-        public string Titulo { get; set; } = string.Empty; //para começar como nula
+        [Required, StringLength(400)]
+        public string Titulo { get; set; }
+
+        [Required, StringLength(150)]
+        public string Autor { get; set; }
+
+        [Required, MaxLength(5000)]
+        public string Descricao { get; set; }
 
         [Required]
-        [StringLength(150)]
-        public string Autor { get; set; } = string.Empty; //para começar como nula
+        public string Capa { get; set; }
 
-        [Required]
-        [MaxLength(5000)]
-        public string Descricao { get; set; } = string.Empty;
-
-        [Required]
-        public string Capa { get; set; } = string.Empty;
-
-        public bool Destaque { get; set; } = false;
+        public bool Destaque { get; set; }
 
         //montando o relacionamento entre as tabelas
         [Required]
         public int GeneroId { get; set; }
-        public Genero Genero { get; set; } = null!;
+        public Genero Genero { get; set; }
 
         [Required]
         public int ClassificacaoIndicativaId { get; set; }
-        public ClassificacaoIndicativa ClassificacaoIndicativa { get; set; } = null!;
-        public ICollection<ImagemLivro> Imagens { get; set; } = new List<ImagemLivro>();
-        public ICollection<Avaliacao> Avaliacoes { get; set; } = new List<Avaliacao>();
-        public ICollection<Comentario> Comentarios { get; set; } = new List<Comentario>();
+        public ClassificacaoIndicativa ClassificacaoIndicativa { get; set; }
+
+        public ICollection<ImagemLivro> Imagens { get; set; }
+        public ICollection<Avaliacao> Avaliacoes { get; set; }
+        public ICollection<Comentario> Comentarios { get; set; }
     }
 }

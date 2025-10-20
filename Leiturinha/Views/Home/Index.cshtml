@@ -7,17 +7,16 @@
     <div class="container-fluid bg-primary px-0 px-md-5 mb-5">
       <div class="row align-items-center px-3">
         <div class="col-lg-6 text-center text-lg-left">
-          <h4 class="text-white mb-4 mt-5 mt-lg-0">Kids Learning Center</h4>
           <h1 class="display-3 font-weight-bold text-white">
-            New Approach to Kids Education
+            LEITURINHA
           </h1>
           <p class="text-white mb-4">
-            Sea ipsum kasd eirmod kasd magna, est sea et diam ipsum est amet sed
-            sit. Ipsum dolor no justo dolor et, lorem ut dolor erat dolore sed
-            ipsum at ipsum nonumy amet. Clita lorem dolore sed stet et est justo
-            dolore.
+                O <strong>Leiturinha</strong> nasceu para que a escolha de livros infantis se torne um momento cheio de significado. Aqui, pais, professores e responsáveis podem descobrir novas leituras, deixar avaliações e compartilhar como foi a experiência com cada história.
           </p>
-          <a href="" class="btn btn-secondary mt-1 py-3 px-5">Learn More</a>
+            <p class="text-white mb-4">
+                Mais do que um espaço de opiniões, o <strong>Leiturinha</strong> é um cantinho de troca e afeto — onde cada resenha ajuda outras famílias a encontrar livros que encantem, ensinem e criem memórias.
+            </p>
+            <a asp-controller="Home" asp-action="Livro" class="btn btn-secondary mt-1 py-3 px-5">Ver todos os livros</a>
         </div>
         <div class="col-lg-6 text-center text-lg-right">
           <img class="img-fluid mt-5" src="~/img/header/header1.png" alt="" />
@@ -26,14 +25,13 @@
 
     </div>
     <!-- Header End -->
+
+
 <!-- Destaques Start -->
 <section class="py-5 bg-light">
     <div class="container px-4 px-lg-5">
         <div class="text-center pb-4">
-            <p class="section-title px-5">
-                <span class="px-2">Livros em Destaque</span>
-            </p>
-            <h1 class="mb-4">Descubra os Favoritos da Semana</h1>
+            <h1 class="mb-4">Descubra os Livros em Destaque</h1>
         </div>
         <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center">
             @if (Model.Destaques != null && Model.Destaques.Any())
@@ -49,27 +47,34 @@
                             }
                             else
                             {
-                                <img class="card-img-top" src="@Url.Content("~/img/produto-sem-imagem.jpg")" alt="@livro.Titulo" />
+                                <img class="card-img-wrapper" src="@Url.Content("~/img/livro-sem-imagem.jpg")" alt="@livro.Titulo" />
                             }
 
                             <div class="card-body text-center">
                                 <h4 class="card-title">@livro.Titulo</h4>
-                                <p class="card-text">@livro.Descricao.Substring(0, Math.Min(120, livro.Descricao.Length))...</p>
+                                
                             </div>
                             <div class="card-footer bg-transparent py-3 px-4">
-                                <div class="row">
-                                    <div class="col-6 text-right border-right"><strong>Gênero</strong></div>
-                                    <div class="col-6">@livro.Genero.Nome</div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <div class="text-primary"><strong>Gênero</strong></div>
+                                    <div><strong>@livro.Genero?.Nome</strong></div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-6 text-right border-right"><strong>Classificação</strong></div>
-                                    <div class="col-6">@livro.ClassificacaoIndicativa.FaixaEtaria</div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <div class="text-primary"><strong>Classificação</strong></div>
+                                    <div><strong>@livro.ClassificacaoIndicativa?.FaixaEtaria</strong></div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-6 text-right border-right"><strong>Média</strong></div>
-                                    <div class="col-6">@destaque.MediaEstrelas.ToString("N1") ⭐</div>
-                                </div>
+                                @{
+                                    var estrelas = Math.Round(destaque.MediaEstrelas);
+                                }
+                                <span class="text-warning fs-5">
+                                    @for (int i = 0; i < estrelas; i++)
+                                    {
+                                        @:⭐
+                                    }
+                                </span>
+
                             </div>
+
                             <a asp-controller="Home" asp-action="Livro" asp-route-id="@livro.Id" class="btn btn-primary px-4 mx-auto mb-4">Ver mais</a>
                         </div>
                     </div>
