@@ -264,9 +264,9 @@ namespace Leiturinha.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     LivroId = table.Column<int>(type: "int", nullable: false),
-                    Usuario = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Conteudo = table.Column<string>(type: "nvarchar(800)", maxLength: 800, nullable: false),
-                    DataComentario = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
+                    UsuarioId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    DataComentario = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    TextoComentario = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -275,6 +275,12 @@ namespace Leiturinha.Migrations
                         name: "FK_Comentarios_Livros_LivroId",
                         column: x => x.LivroId,
                         principalTable: "Livros",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Comentarios_Usuario_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuario",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -303,12 +309,7 @@ namespace Leiturinha.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[,]
-                {
-                    { "ddf093a6-6cb5-4ff7-9a64-83da34aee005", 0, "32bc2f97-4ced-4868-9da6-71b32e7c95df", "admin@leiturinha.com", true, false, null, "ADMIN@LEITURINHA.COM", "ADMIN", "AQAAAAIAAYagAAAAEKvJyuYUG06nq+g0ZbrzMzNDtQJyMiiF0J+UeP8K586bic6ETfiotj79wM/PEWmvKA==", null, false, "6333efad-5db7-4272-874f-3116c608541c", false, "Admin" },
-                    { "e7b1b8c1-9c1a-4d9f-8f4e-1a2b3c4d5e6f", 0, "8f2522e3-eec8-4e49-9637-1f915f72d5ec", "usuario@leiturinha.com", true, false, null, "USUARIO@LEITURINHA.COM", "USUARIO", "AQAAAAIAAYagAAAAEAFr2WOBfT+w7ZWqXt/Nfy+gog2YU+N9dtHkmFI0XSkO1idiyGrFXMm7oKt2R83cPA==", null, false, "5add3a16-5951-4c46-940c-492c6f61bc90", false, "Usuario" },
-                    { "f3c2d1b0-1234-4abc-8def-9a0b1c2d3e4f", 0, "30f57e29-e7d9-49cd-b997-6bf20e9f5b77", "moderador@leiturinha.com", true, false, null, "MODERADOR@LEITURINHA.COM", "MODERADOR", "AQAAAAIAAYagAAAAEFy/vX1JOxnbdFvR9rncqZiUdqWy2jeJmnYAu/kyjeoiWE3U3P8YPlaViQUvyvC1sQ==", null, false, "9fb3045a-2474-4c4a-9417-0ff70471caf2", false, "Moderador" }
-                });
+                values: new object[] { "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01", 0, "5c48095f-0709-47e0-93d5-29c464405cd9", "taynasuperti@gmail.com", true, true, null, "TAYNASUPERTI@GMAIL.COM", "TAYNASUPERTI", "AQAAAAIAAYagAAAAELNpGGq7rnKZV4IB+ut0nmfsXiXIhn8WwC2diGfxadGDXlD9lRPX5ZtG9t0jmCXxFQ==", null, false, "dab09152-36e6-41e5-bd23-70ca9b41ee97", false, "taynasuperti" });
 
             migrationBuilder.InsertData(
                 table: "Classificacoes",
@@ -339,9 +340,9 @@ namespace Leiturinha.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "0b44ca04-f6b0-4a8f-a953-1f2330d30894", "c233cf32-72f3-4daa-a488-28d01392b202", "Administrador", "ADMINISTRADOR" },
-                    { "b7d093a6-6cb5-4ff7-9a64-83da34aee007", "c3ab58e0-70f3-418d-8502-5f3ed2b5de32", "Moderador", "MODERADOR" },
-                    { "bec71b05-8f3d-4849-88bb-0e8d518d2de8", "19829e0f-d230-46e0-86fc-3e806338e2a1", "Usuário", "USUÁRIO" }
+                    { "0b44ca04-f6b0-4a8f-a953-1f2330d30894", null, "Administrador", "ADMINISTRADOR" },
+                    { "bec71b05-8f3d-4849-88bb-0e8d518d2de8", null, "Funcionário", "FUNCIONÁRIO" },
+                    { "ddf093a6-6cb5-4ff7-9a64-83da34aee005", null, "Cliente", "CLIENTE" }
                 });
 
             migrationBuilder.InsertData(
@@ -384,21 +385,16 @@ namespace Leiturinha.Migrations
             migrationBuilder.InsertData(
                 table: "Usuario",
                 columns: new[] { "Id", "DataNascimento", "Foto", "Nome" },
-                values: new object[,]
-                {
-                    { "ddf093a6-6cb5-4ff7-9a64-83da34aee005", new DateTime(2006, 11, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "/img/usuarios/no-photo.png", "Tayná Carolina Miguel Superti" },
-                    { "e7b1b8c1-9c1a-4d9f-8f4e-1a2b3c4d5e6f", new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "/img/usuarios/no-photo.png", "Usuário Padrão" },
-                    { "f3c2d1b0-1234-4abc-8def-9a0b1c2d3e4f", new DateTime(2008, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "/img/usuarios/no-photo.png", "Moderador Padrão" }
-                });
+                values: new object[] { "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01", new DateTime(2006, 11, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "/img/usuarios/no-photo.png", "Tayná Carolina Miguel Superti" });
 
             migrationBuilder.InsertData(
                 table: "UsuarioPerfil",
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "0b44ca04-f6b0-4a8f-a953-1f2330d30894", "ddf093a6-6cb5-4ff7-9a64-83da34aee005" },
-                    { "bec71b05-8f3d-4849-88bb-0e8d518d2de8", "e7b1b8c1-9c1a-4d9f-8f4e-1a2b3c4d5e6f" },
-                    { "b7d093a6-6cb5-4ff7-9a64-83da34aee007", "f3c2d1b0-1234-4abc-8def-9a0b1c2d3e4f" }
+                    { "0b44ca04-f6b0-4a8f-a953-1f2330d30894", "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01" },
+                    { "bec71b05-8f3d-4849-88bb-0e8d518d2de8", "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01" },
+                    { "ddf093a6-6cb5-4ff7-9a64-83da34aee005", "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01" }
                 });
 
             migrationBuilder.InsertData(
@@ -451,6 +447,11 @@ namespace Leiturinha.Migrations
                 name: "IX_Comentarios_LivroId",
                 table: "Comentarios",
                 column: "LivroId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comentarios_UsuarioId",
+                table: "Comentarios",
+                column: "UsuarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ImagemLivro_LivroId",
@@ -511,9 +512,6 @@ namespace Leiturinha.Migrations
                 name: "PerfilRegra");
 
             migrationBuilder.DropTable(
-                name: "Usuario");
-
-            migrationBuilder.DropTable(
                 name: "UsuarioLogin");
 
             migrationBuilder.DropTable(
@@ -524,6 +522,9 @@ namespace Leiturinha.Migrations
 
             migrationBuilder.DropTable(
                 name: "UsuarioToken");
+
+            migrationBuilder.DropTable(
+                name: "Usuario");
 
             migrationBuilder.DropTable(
                 name: "Livros");

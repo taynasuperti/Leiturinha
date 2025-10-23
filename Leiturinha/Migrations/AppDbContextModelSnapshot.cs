@@ -104,25 +104,26 @@ namespace Leiturinha.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Conteudo")
-                        .IsRequired()
-                        .HasMaxLength(800)
-                        .HasColumnType("nvarchar(800)");
-
-                    b.Property<DateTimeOffset>("DataComentario")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("DataComentario")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("LivroId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Usuario")
+                    b.Property<string>("TextoComentario")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<string>("UsuarioId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("LivroId");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Comentarios");
                 });
@@ -762,23 +763,20 @@ namespace Leiturinha.Migrations
                         new
                         {
                             Id = "0b44ca04-f6b0-4a8f-a953-1f2330d30894",
-                            ConcurrencyStamp = "c233cf32-72f3-4daa-a488-28d01392b202",
                             Name = "Administrador",
                             NormalizedName = "ADMINISTRADOR"
                         },
                         new
                         {
                             Id = "bec71b05-8f3d-4849-88bb-0e8d518d2de8",
-                            ConcurrencyStamp = "19829e0f-d230-46e0-86fc-3e806338e2a1",
-                            Name = "Usuário",
-                            NormalizedName = "USUÁRIO"
+                            Name = "Funcionário",
+                            NormalizedName = "FUNCIONÁRIO"
                         },
                         new
                         {
-                            Id = "b7d093a6-6cb5-4ff7-9a64-83da34aee007",
-                            ConcurrencyStamp = "c3ab58e0-70f3-418d-8502-5f3ed2b5de32",
-                            Name = "Moderador",
-                            NormalizedName = "MODERADOR"
+                            Id = "ddf093a6-6cb5-4ff7-9a64-83da34aee005",
+                            Name = "Cliente",
+                            NormalizedName = "CLIENTE"
                         });
                 });
 
@@ -938,18 +936,18 @@ namespace Leiturinha.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "ddf093a6-6cb5-4ff7-9a64-83da34aee005",
+                            UserId = "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01",
                             RoleId = "0b44ca04-f6b0-4a8f-a953-1f2330d30894"
                         },
                         new
                         {
-                            UserId = "e7b1b8c1-9c1a-4d9f-8f4e-1a2b3c4d5e6f",
+                            UserId = "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01",
                             RoleId = "bec71b05-8f3d-4849-88bb-0e8d518d2de8"
                         },
                         new
                         {
-                            UserId = "f3c2d1b0-1234-4abc-8def-9a0b1c2d3e4f",
-                            RoleId = "b7d093a6-6cb5-4ff7-9a64-83da34aee007"
+                            UserId = "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01",
+                            RoleId = "ddf093a6-6cb5-4ff7-9a64-83da34aee005"
                         });
                 });
 
@@ -993,60 +991,22 @@ namespace Leiturinha.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ddf093a6-6cb5-4ff7-9a64-83da34aee005",
+                            Id = "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "32bc2f97-4ced-4868-9da6-71b32e7c95df",
-                            Email = "admin@leiturinha.com",
+                            ConcurrencyStamp = "5c48095f-0709-47e0-93d5-29c464405cd9",
+                            Email = "taynasuperti@gmail.com",
                             EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@LEITURINHA.COM",
-                            NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKvJyuYUG06nq+g0ZbrzMzNDtQJyMiiF0J+UeP8K586bic6ETfiotj79wM/PEWmvKA==",
+                            LockoutEnabled = true,
+                            NormalizedEmail = "TAYNASUPERTI@GMAIL.COM",
+                            NormalizedUserName = "TAYNASUPERTI",
+                            PasswordHash = "AQAAAAIAAYagAAAAELNpGGq7rnKZV4IB+ut0nmfsXiXIhn8WwC2diGfxadGDXlD9lRPX5ZtG9t0jmCXxFQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6333efad-5db7-4272-874f-3116c608541c",
+                            SecurityStamp = "dab09152-36e6-41e5-bd23-70ca9b41ee97",
                             TwoFactorEnabled = false,
-                            UserName = "Admin",
+                            UserName = "taynasuperti",
                             DataNascimento = new DateTime(2006, 11, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Foto = "/img/usuarios/no-photo.png",
                             Nome = "Tayná Carolina Miguel Superti"
-                        },
-                        new
-                        {
-                            Id = "e7b1b8c1-9c1a-4d9f-8f4e-1a2b3c4d5e6f",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "8f2522e3-eec8-4e49-9637-1f915f72d5ec",
-                            Email = "usuario@leiturinha.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "USUARIO@LEITURINHA.COM",
-                            NormalizedUserName = "USUARIO",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAFr2WOBfT+w7ZWqXt/Nfy+gog2YU+N9dtHkmFI0XSkO1idiyGrFXMm7oKt2R83cPA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "5add3a16-5951-4c46-940c-492c6f61bc90",
-                            TwoFactorEnabled = false,
-                            UserName = "Usuario",
-                            DataNascimento = new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Foto = "/img/usuarios/no-photo.png",
-                            Nome = "Usuário Padrão"
-                        },
-                        new
-                        {
-                            Id = "f3c2d1b0-1234-4abc-8def-9a0b1c2d3e4f",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "30f57e29-e7d9-49cd-b997-6bf20e9f5b77",
-                            Email = "moderador@leiturinha.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "MODERADOR@LEITURINHA.COM",
-                            NormalizedUserName = "MODERADOR",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFy/vX1JOxnbdFvR9rncqZiUdqWy2jeJmnYAu/kyjeoiWE3U3P8YPlaViQUvyvC1sQ==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "9fb3045a-2474-4c4a-9417-0ff70471caf2",
-                            TwoFactorEnabled = false,
-                            UserName = "Moderador",
-                            DataNascimento = new DateTime(2008, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Foto = "/img/usuarios/no-photo.png",
-                            Nome = "Moderador Padrão"
                         });
                 });
 
@@ -1069,7 +1029,15 @@ namespace Leiturinha.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Leiturinha.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Livro");
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("Leiturinha.Models.ImagemLivro", b =>

@@ -1,26 +1,32 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Leiturinha.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+namespace Leiturinha.Models;
 
-namespace Leiturinha.Models
+public class Comentario
 {
-    public class Comentario
-    {
-        public int Id { get; set; }
+    [Key]
+    public int Id { get; set; }
 
-        //pq é preciso saber qual comentário que o usuário deu para o livro em específico
-        [Required]
-        public int LivroId { get; set; }
-        public Livro Livro { get; set; } = null!;
+    [Display(Name = "Livro")]
+    [Required(ErrorMessage = "O Livro é obrigatória")]
+    public int LivroId { get; set; }
+    [ForeignKey("LivroId")]
+    [Display(Name = "Livro")]
+    public Livro Livro { get; set; }
 
-        //pra saber quem fez a avaliação
-        [Required]
-        [StringLength(50)]
-        public string Usuario { get; set; } = string.Empty;
+    [Display(Name = "Usuario")]
+    [Required(ErrorMessage = "O Usuario é obrigatório")]
+    public string UsuarioId { get; set; }
+    [ForeignKey("UsuarioId")]
+    [Display(Name = "Usuario")]
+    public Usuario Usuario { get; set; }
 
-        //pra saber o conteúdo do comentário
-        [Required]
-        [StringLength(800)]
-        public string Conteudo { get; set; } = string.Empty;
+    [Display(Name = "Data do Comentário")]
+    [Required(ErrorMessage = "A Data é obrigatória")]
+    public DateTime DataComentario { get; set; }
 
-        public DateTimeOffset DataComentario { get; set; } = DateTimeOffset.Now; // mesmo esquema da avaliação, esse trecho ajuda a aparecer corretamente data e hora do comentário
-    }
+    [StringLength(300)]
+    [Required(ErrorMessage = "O Texto é obrigatório")]
+    public string TextoComentario { get; set; }
 }

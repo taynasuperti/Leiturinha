@@ -1,6 +1,7 @@
 ﻿using Leiturinha.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Leiturinha.Data
 {
@@ -407,94 +408,78 @@ namespace Leiturinha.Data
                 new ImagemLivro { Id = 22, LivroId = 28, CaminhoImagem = "~/img/47/versos-magicos2.jpg", DescricaoFoto = "Foto adicional" }
             );
 
-            // roles
-            var roles = new List<IdentityRole>
+            #region Perfis de Usuário
+            List<IdentityRole> roles = new()
             {
-                new IdentityRole {
+                new IdentityRole
+                {
                     Id = "0b44ca04-f6b0-4a8f-a953-1f2330d30894",
                     Name = "Administrador",
-                    NormalizedName = "ADMINISTRADOR",
-                    ConcurrencyStamp = Guid.NewGuid().ToString()
+                    NormalizedName = "ADMINISTRADOR"
                 },
-                new IdentityRole {
+                new IdentityRole
+                {
                     Id = "bec71b05-8f3d-4849-88bb-0e8d518d2de8",
-                    Name = "Usuário",
-                    NormalizedName = "USUÁRIO",
-                    ConcurrencyStamp = Guid.NewGuid().ToString()
+                    Name = "Funcionário",
+                    NormalizedName = "FUNCIONÁRIO"
                 },
-                new IdentityRole {
-                    Id = "b7d093a6-6cb5-4ff7-9a64-83da34aee007",
-                    Name = "Moderador",
-                    NormalizedName = "MODERADOR",
-                    ConcurrencyStamp = Guid.NewGuid().ToString()
+                new IdentityRole
+                {
+                    Id = "ddf093a6-6cb5-4ff7-9a64-83da34aee005",
+                    Name = "Cliente",
+                    NormalizedName = "CLIENTE"
                 }
             };
-            modelBuilder.Entity<IdentityRole>().HasData(roles);
+            modelBuilder.Entity<IdentityRole>().HasData(roles.ToArray());
+            #endregion
 
-            // users: Administrador, Usuario padrão, Moderador
-            var adminUser = new Usuario
+            #region Usuário Padrão
+            List<Usuario> usuarios = new()
             {
-                Id = "ddf093a6-6cb5-4ff7-9a64-83da34aee005",
-                UserName = "Admin",
-                NormalizedUserName = "ADMIN",
-                Email = "admin@leiturinha.com",
-                NormalizedEmail = "ADMIN@LEITURINHA.COM",
-                EmailConfirmed = true,
-                LockoutEnabled = false,
-                Nome = "Tayná Carolina Miguel Superti",
-                DataNascimento = new DateTime(2006, 11, 6),
-                Foto = "/img/usuarios/no-photo.png",
-                SecurityStamp = Guid.NewGuid().ToString(),
-                ConcurrencyStamp = Guid.NewGuid().ToString()
+                new Usuario
+                {
+                    Id = "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01",
+                    Email = "taynasuperti@gmail.com",
+                    NormalizedEmail = "TAYNASUPERTI@GMAIL.COM",
+                    UserName = "taynasuperti",
+                    NormalizedUserName = "TAYNASUPERTI",
+                    LockoutEnabled = true,
+                    EmailConfirmed = true,
+                    Nome = "Tayná Carolina Miguel Superti",
+                    DataNascimento = new DateTime(2006, 11, 6),
+                    Foto = "/img/usuarios/no-photo.png"
+                }
             };
 
-            var normalUser = new Usuario
+            PasswordHasher<Usuario> hasher = new();
+            foreach (var user in usuarios)
             {
-                Id = "e7b1b8c1-9c1a-4d9f-8f4e-1a2b3c4d5e6f",
-                UserName = "Usuario",
-                NormalizedUserName = "USUARIO",
-                Email = "usuario@leiturinha.com",
-                NormalizedEmail = "USUARIO@LEITURINHA.COM",
-                EmailConfirmed = true,
-                LockoutEnabled = false,
-                Nome = "Usuário Padrão",
-                DataNascimento = new DateTime(2010, 1, 1),
-                Foto = "/img/usuarios/no-photo.png",
-                SecurityStamp = Guid.NewGuid().ToString(),
-                ConcurrencyStamp = Guid.NewGuid().ToString()
-            };
+                user.PasswordHash = hasher.HashPassword(user, "123456");
+            }
+            modelBuilder.Entity<Usuario>().HasData(usuarios.ToArray());
+            #endregion
 
-            var moderadorUser = new Usuario
+            #region Relacionamento Usuário-Perfil
+            List<IdentityUserRole<string>> userRoles = new()
             {
-                Id = "f3c2d1b0-1234-4abc-8def-9a0b1c2d3e4f",
-                UserName = "Moderador",
-                NormalizedUserName = "MODERADOR",
-                Email = "moderador@leiturinha.com",
-                NormalizedEmail = "MODERADOR@LEITURINHA.COM",
-                EmailConfirmed = true,
-                LockoutEnabled = false,
-                Nome = "Moderador Padrão",
-                DataNascimento = new DateTime(2008, 1, 1),
-                Foto = "/img/usuarios/no-photo.png",
-                SecurityStamp = Guid.NewGuid().ToString(),
-                ConcurrencyStamp = Guid.NewGuid().ToString()
-            };
-
-            var hasher = new PasswordHasher<Usuario>();
-            adminUser.PasswordHash = hasher.HashPassword(adminUser, "@Senha123");
-            normalUser.PasswordHash = hasher.HashPassword(normalUser, "@Senha123");
-            moderadorUser.PasswordHash = hasher.HashPassword(moderadorUser, "@Senha123");
-
-            modelBuilder.Entity<Usuario>().HasData(adminUser, normalUser, moderadorUser);
-
-            // associações usuário -> role
-            var userRoles = new List<IdentityUserRole<string>>
-            {
-                new IdentityUserRole<string> { UserId = adminUser.Id, RoleId = roles[0].Id },      // Administrador
-                new IdentityUserRole<string> { UserId = normalUser.Id, RoleId = roles[1].Id },     // Usuário
-                new IdentityUserRole<string> { UserId = moderadorUser.Id, RoleId = roles[2].Id }   // Moderador
+                new IdentityUserRole<string>
+                {
+                    UserId = usuarios[0].Id,
+                    RoleId = roles[0].Id // Administrador
+                },
+                new IdentityUserRole<string>
+                {
+                    UserId = usuarios[0].Id,
+                    RoleId = roles[1].Id // Funcionário
+                },
+                new IdentityUserRole<string>
+                {
+                    UserId = usuarios[0].Id,
+                    RoleId = roles[2].Id // Cliente
+                }
             };
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(userRoles.ToArray());
+            #endregion
         }
     }
 }

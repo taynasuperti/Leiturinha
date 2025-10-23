@@ -2,7 +2,7 @@
 
 namespace Leiturinha.Models
 {
-    public class Livro
+    public class Livro 
     {
         //adicionando propriedades
         public int Id { get; set; }
