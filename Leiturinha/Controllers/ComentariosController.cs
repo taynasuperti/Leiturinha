@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Leiturinha.Data;
 using Leiturinha.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace Leiturinha.Controllers
 {
@@ -17,6 +19,38 @@ namespace Leiturinha.Controllers
         public ComentariosController(AppDbContext context)
         {
             _context = context;
+        }
+
+        // ✅ Método público para criação de comentários
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Criar(int LivroId, string Texto)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                TempData["Erro"] = "Você precisa estar logado para comentar.";
+                return RedirectToAction("Livro", "Home", new { id = LivroId });
+            }
+
+            if (string.IsNullOrWhiteSpace(Texto))
+            {
+                TempData["Erro"] = "O comentário não pode estar vazio.";
+                return RedirectToAction("Livro", "Home", new { id = LivroId });
+            }
+
+            var comentario = new Comentario
+            {
+                LivroId = LivroId,
+                TextoComentario = Texto,
+                DataComentario = DateTime.Now,
+                UsuarioId = User.FindFirstValue(ClaimTypes.NameIdentifier)
+            };
+
+            _context.Comentarios.Add(comentario);
+            await _context.SaveChangesAsync();
+
+            TempData["Sucesso"] = "Comentário enviado com sucesso!";
+            return RedirectToAction("Livro", "Home", new { id = LivroId });
         }
 
         // GET: Comentarios
@@ -46,7 +80,7 @@ namespace Leiturinha.Controllers
             return View(comentario);
         }
 
-        // GET: Comentarios/Create
+        // GET: Comentarios/Create (admin)
         public IActionResult Create()
         {
             ViewData["LivroId"] = new SelectList(_context.Livros, "Id", "Autor");
@@ -54,9 +88,7 @@ namespace Leiturinha.Controllers
             return View();
         }
 
-        // POST: Comentarios/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Comentarios/Create (admin)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,LivroId,UsuarioId,DataComentario,TextoComentario")] Comentario comentario)
@@ -91,8 +123,6 @@ namespace Leiturinha.Controllers
         }
 
         // POST: Comentarios/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,LivroId,UsuarioId,DataComentario,TextoComentario")] Comentario comentario)

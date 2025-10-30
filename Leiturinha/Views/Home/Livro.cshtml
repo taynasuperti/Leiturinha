@@ -44,16 +44,39 @@
             <h2 class="mb-4">O que você achou deste livro?</h2>
         </div>
 
+        <!-- Mensagens de feedback -->
+        @if (TempData["Sucesso"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["Sucesso"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        @if (TempData["Erro"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @TempData["Erro"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
         <!-- Formulário de comentário -->
         <div class="row justify-content-center mb-5">
             <div class="col-md-8">
-                <form asp-controller="Comentarios" asp-action="Create" method="post">
-                    <input type="hidden" name="LivroId" value="@Model.Livro.Id" />
-                    <div class="form-group mb-3">
-                        <textarea name="Texto" class="form-control" rows="4" placeholder="Escreva seu comentário aqui..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary px-4">Enviar comentário</button>
-                </form>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <form asp-controller="Comentarios" asp-action="Criar" method="post">
+                        <input type="hidden" name="LivroId" value="@Model.Livro.Id" />
+                        <div class="form-group mb-3">
+                            <textarea name="Texto" class="form-control" rows="4" placeholder="Escreva seu comentário aqui..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary px-4">Enviar comentário</button>
+                    </form>
+                }
+                else
+                {
+                    <p class="text-muted text-center">Você precisa estar logado para comentar.</p>
+                }
             </div>
         </div>
 
