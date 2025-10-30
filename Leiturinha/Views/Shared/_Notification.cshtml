@@ -14,7 +14,7 @@
         }
     });
     // Implementando o js no dotnet
-    const message = @Html.Raw(Json.Serialize(TempData["Success"]));
+    const message = @Html.Raw(Json.Serialize(TempData["Success"])) ?? null;
 
     if (message) {
         Toast.fire({

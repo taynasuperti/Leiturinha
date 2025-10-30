@@ -17,7 +17,7 @@ namespace Leiturinha.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.20")
+                .HasAnnotation("ProductVersion", "8.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -39,14 +39,15 @@ namespace Leiturinha.Migrations
                     b.Property<int>("Nota")
                         .HasColumnType("int");
 
-                    b.Property<string>("Usuario")
+                    b.Property<string>("UsuarioId")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("LivroId");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Avaliacoes");
                 });
@@ -650,7 +651,7 @@ namespace Leiturinha.Migrations
                             Capa = "~/img/31/o-reino-das-cores.jpg",
                             ClassificacaoIndicativaId = 2,
                             Descricao = "Sete reinos, cada um com uma cor; no fim descobrem o valor da união.",
-                            Destaque = true,
+                            Destaque = false,
                             GeneroId = 4,
                             Titulo = "O Reino das Cores"
                         },
@@ -733,6 +734,104 @@ namespace Leiturinha.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Leiturinha.Models.Usuario", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DataNascimento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Foto")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("Usuario", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "eeba1fbb-e629-4137-a093-dcfa03b81564",
+                            DataNascimento = new DateTime(2006, 11, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "taynasuperti@gmail.com",
+                            EmailConfirmed = true,
+                            Foto = "/img/usuarios/no-photo.png",
+                            LockoutEnabled = true,
+                            Nome = "Tayná Carolina Miguel Superti",
+                            NormalizedEmail = "TAYNASUPERTI@GMAIL.COM",
+                            NormalizedUserName = "TAYNASUPERTI",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJK9qjoK7u/7WhxkuIzrubi2SP8Bw+0hZleqPDX8FxmKNR1WBv3bHXOPL0eaquaVOw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "a1ebc8cd-8f43-43eb-91f9-937235843b9a",
+                            TwoFactorEnabled = false,
+                            UserName = "taynasuperti"
+                        });
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -803,73 +902,6 @@ namespace Leiturinha.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("PerfilRegra", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers", (string)null);
-
-                    b.UseTptMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -970,46 +1002,6 @@ namespace Leiturinha.Migrations
                     b.ToTable("UsuarioToken", (string)null);
                 });
 
-            modelBuilder.Entity("Leiturinha.Models.Usuario", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<DateTime?>("DataNascimento")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Foto")
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.ToTable("Usuario", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "5c48095f-0709-47e0-93d5-29c464405cd9",
-                            Email = "taynasuperti@gmail.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = true,
-                            NormalizedEmail = "TAYNASUPERTI@GMAIL.COM",
-                            NormalizedUserName = "TAYNASUPERTI",
-                            PasswordHash = "AQAAAAIAAYagAAAAELNpGGq7rnKZV4IB+ut0nmfsXiXIhn8WwC2diGfxadGDXlD9lRPX5ZtG9t0jmCXxFQ==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "dab09152-36e6-41e5-bd23-70ca9b41ee97",
-                            TwoFactorEnabled = false,
-                            UserName = "taynasuperti",
-                            DataNascimento = new DateTime(2006, 11, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Foto = "/img/usuarios/no-photo.png",
-                            Nome = "Tayná Carolina Miguel Superti"
-                        });
-                });
-
             modelBuilder.Entity("Leiturinha.Models.Avaliacao", b =>
                 {
                     b.HasOne("Leiturinha.Models.Livro", "Livro")
@@ -1018,7 +1010,15 @@ namespace Leiturinha.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Leiturinha.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Livro");
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("Leiturinha.Models.Comentario", b =>
@@ -1081,7 +1081,7 @@ namespace Leiturinha.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Leiturinha.Models.Usuario", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1090,7 +1090,7 @@ namespace Leiturinha.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Leiturinha.Models.Usuario", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1105,7 +1105,7 @@ namespace Leiturinha.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Leiturinha.Models.Usuario", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1114,18 +1114,9 @@ namespace Leiturinha.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Leiturinha.Models.Usuario", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Leiturinha.Models.Usuario", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
-                        .WithOne()
-                        .HasForeignKey("Leiturinha.Models.Usuario", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

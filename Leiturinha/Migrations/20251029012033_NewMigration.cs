@@ -14,31 +14,6 @@ namespace Leiturinha.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AspNetUsers",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Classificacoes",
                 columns: table => new
                 {
@@ -85,78 +60,25 @@ namespace Leiturinha.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Nome = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     DataNascimento = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Foto = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true)
+                    Foto = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Usuario", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Usuario_AspNetUsers_Id",
-                        column: x => x.Id,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UsuarioLogin",
-                columns: table => new
-                {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UsuarioLogin", x => new { x.LoginProvider, x.ProviderKey });
-                    table.ForeignKey(
-                        name: "FK_UsuarioLogin_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UsuarioRegra",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UsuarioRegra", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_UsuarioRegra_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UsuarioToken",
-                columns: table => new
-                {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UsuarioToken", x => new { x.UserId, x.LoginProvider, x.Name });
-                    table.ForeignKey(
-                        name: "FK_UsuarioToken_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -212,6 +134,26 @@ namespace Leiturinha.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UsuarioLogin",
+                columns: table => new
+                {
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UsuarioLogin", x => new { x.LoginProvider, x.ProviderKey });
+                    table.ForeignKey(
+                        name: "FK_UsuarioLogin_Usuario_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Usuario",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UsuarioPerfil",
                 columns: table => new
                 {
@@ -222,15 +164,56 @@ namespace Leiturinha.Migrations
                 {
                     table.PrimaryKey("PK_UsuarioPerfil", x => new { x.UserId, x.RoleId });
                     table.ForeignKey(
-                        name: "FK_UsuarioPerfil_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_UsuarioPerfil_Perfil_RoleId",
                         column: x => x.RoleId,
                         principalTable: "Perfil",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UsuarioPerfil_Usuario_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Usuario",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UsuarioRegra",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UsuarioRegra", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UsuarioRegra_Usuario_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Usuario",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UsuarioToken",
+                columns: table => new
+                {
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UsuarioToken", x => new { x.UserId, x.LoginProvider, x.Name });
+                    table.ForeignKey(
+                        name: "FK_UsuarioToken_Usuario_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Usuario",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -242,8 +225,8 @@ namespace Leiturinha.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     LivroId = table.Column<int>(type: "int", nullable: false),
+                    UsuarioId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Nota = table.Column<int>(type: "int", nullable: false),
-                    Usuario = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     DataAvaliacao = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
                 },
                 constraints: table =>
@@ -253,6 +236,12 @@ namespace Leiturinha.Migrations
                         name: "FK_Avaliacoes_Livros_LivroId",
                         column: x => x.LivroId,
                         principalTable: "Livros",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Avaliacoes_Usuario_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuario",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -307,11 +296,6 @@ namespace Leiturinha.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01", 0, "5c48095f-0709-47e0-93d5-29c464405cd9", "taynasuperti@gmail.com", true, true, null, "TAYNASUPERTI@GMAIL.COM", "TAYNASUPERTI", "AQAAAAIAAYagAAAAELNpGGq7rnKZV4IB+ut0nmfsXiXIhn8WwC2diGfxadGDXlD9lRPX5ZtG9t0jmCXxFQ==", null, false, "dab09152-36e6-41e5-bd23-70ca9b41ee97", false, "taynasuperti" });
-
-            migrationBuilder.InsertData(
                 table: "Classificacoes",
                 columns: new[] { "Id", "FaixaEtaria" },
                 values: new object[,]
@@ -346,6 +330,11 @@ namespace Leiturinha.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Usuario",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DataNascimento", "Email", "EmailConfirmed", "Foto", "LockoutEnabled", "LockoutEnd", "Nome", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01", 0, "eeba1fbb-e629-4137-a093-dcfa03b81564", new DateTime(2006, 11, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "taynasuperti@gmail.com", true, "/img/usuarios/no-photo.png", true, null, "Tayná Carolina Miguel Superti", "TAYNASUPERTI@GMAIL.COM", "TAYNASUPERTI", "AQAAAAIAAYagAAAAEJK9qjoK7u/7WhxkuIzrubi2SP8Bw+0hZleqPDX8FxmKNR1WBv3bHXOPL0eaquaVOw==", null, false, "a1ebc8cd-8f43-43eb-91f9-937235843b9a", false, "taynasuperti" });
+
+            migrationBuilder.InsertData(
                 table: "Livros",
                 columns: new[] { "Id", "Autor", "Capa", "ClassificacaoIndicativaId", "Descricao", "Destaque", "GeneroId", "Titulo" },
                 values: new object[,]
@@ -372,7 +361,7 @@ namespace Leiturinha.Migrations
                     { 21, "Tatiana Belinky", "~/img/28/contos-de-muitos-povos.jpg", 4, "Contos populares recontados com leveza e humor.", false, 3, "Contos de Muitos Povos" },
                     { 22, "Pé da Letra", "~/img/29/lobo-e-os-sete-cabritinhos.jpg", 1, "Uma cabra deixa seus sete filhos sozinhos em casa e alerta sobre o Lobo Mau.", false, 3, "O Lobo e os Sete Cabritinhos" },
                     { 23, "Corey Tabor", "~/img/30/simao-e-o-osso1.jpg", 2, "Uma lição sobre empatia em forma de história infantil.", true, 3, "Simão e o osso" },
-                    { 24, "Geizy Reis", "~/img/31/o-reino-das-cores.jpg", 2, "Sete reinos, cada um com uma cor; no fim descobrem o valor da união.", true, 4, "O Reino das Cores" },
+                    { 24, "Geizy Reis", "~/img/31/o-reino-das-cores.jpg", 2, "Sete reinos, cada um com uma cor; no fim descobrem o valor da união.", false, 4, "O Reino das Cores" },
                     { 25, "Elisa De Biase Hopman", "~/img/32/a-floresta-encantada.jpg", 3, "Várias cenas da floresta descritas com leveza e ilustrações primorosas.", false, 4, "A Floresta Encantada" },
                     { 26, "Emília Nuñez", "~/img/34/chorar-e-como-chover1.jpg", 5, "Uma história para refletir sobre emoções da infância.", true, 4, "Chorar é como Chover" },
                     { 27, "Lewis Carroll", "~/img/40/alice-no-pais-das-maravilhas1.jpg", 5, "Alice segue o Coelho Branco até uma toca e vive aventuras maravilhosas.", true, 4, "Alice no País das Maravilhas (Classic Edition)" },
@@ -381,11 +370,6 @@ namespace Leiturinha.Migrations
                     { 30, "Eduardo Rodrigues", "~/img/49/pequenos-poemas.jpg", 3, "Pequenos poemas que convidam à graça das coisas cotidianas.", false, 5, "Pequenos Poemas Para Pequenos" },
                     { 31, "Roseana Murray e Roger Mello", "~/img/50/jardins1.jpg", 5, "Quinze pequenos poemas que representam jardins variados.", false, 5, "Jardins" }
                 });
-
-            migrationBuilder.InsertData(
-                table: "Usuario",
-                columns: new[] { "Id", "DataNascimento", "Foto", "Nome" },
-                values: new object[] { "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01", new DateTime(2006, 11, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "/img/usuarios/no-photo.png", "Tayná Carolina Miguel Superti" });
 
             migrationBuilder.InsertData(
                 table: "UsuarioPerfil",
@@ -427,21 +411,14 @@ namespace Leiturinha.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "EmailIndex",
-                table: "AspNetUsers",
-                column: "NormalizedEmail");
-
-            migrationBuilder.CreateIndex(
-                name: "UserNameIndex",
-                table: "AspNetUsers",
-                column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Avaliacoes_LivroId",
                 table: "Avaliacoes",
                 column: "LivroId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Avaliacoes_UsuarioId",
+                table: "Avaliacoes",
+                column: "UsuarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comentarios_LivroId",
@@ -479,6 +456,18 @@ namespace Leiturinha.Migrations
                 name: "IX_PerfilRegra_RoleId",
                 table: "PerfilRegra",
                 column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "EmailIndex",
+                table: "Usuario",
+                column: "NormalizedEmail");
+
+            migrationBuilder.CreateIndex(
+                name: "UserNameIndex",
+                table: "Usuario",
+                column: "NormalizedUserName",
+                unique: true,
+                filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UsuarioLogin_UserId",
@@ -524,16 +513,13 @@ namespace Leiturinha.Migrations
                 name: "UsuarioToken");
 
             migrationBuilder.DropTable(
-                name: "Usuario");
-
-            migrationBuilder.DropTable(
                 name: "Livros");
 
             migrationBuilder.DropTable(
                 name: "Perfil");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Usuario");
 
             migrationBuilder.DropTable(
                 name: "Classificacoes");

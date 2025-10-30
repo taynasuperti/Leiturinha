@@ -280,7 +280,7 @@ namespace Leiturinha.Data
                    Capa = "~/img/31/o-reino-das-cores.jpg",
                    GeneroId = 4,
                    ClassificacaoIndicativaId = 2,
-                   Destaque = true
+                   Destaque = false
                },
                new Livro
                {

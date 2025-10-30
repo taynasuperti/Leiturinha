@@ -4,7 +4,6 @@ namespace Leiturinha.Models
 {
     public class Livro 
     {
-        //adicionando propriedades
         public int Id { get; set; }
 
         [Required, StringLength(400)]
@@ -21,7 +20,6 @@ namespace Leiturinha.Models
 
         public bool Destaque { get; set; }
 
-        //montando o relacionamento entre as tabelas
         [Required]
         public int GeneroId { get; set; }
         public Genero Genero { get; set; }
@@ -30,8 +28,8 @@ namespace Leiturinha.Models
         public int ClassificacaoIndicativaId { get; set; }
         public ClassificacaoIndicativa ClassificacaoIndicativa { get; set; }
 
-        public ICollection<ImagemLivro> Imagens { get; set; }
-        public ICollection<Avaliacao> Avaliacoes { get; set; }
-        public ICollection<Comentario> Comentarios { get; set; }
+        public ICollection<ImagemLivro> Imagens { get; set; } = new List<ImagemLivro>();
+        public ICollection<Avaliacao> Avaliacoes { get; set; } = new List<Avaliacao>();
+        public ICollection<Comentario> Comentarios { get; set; } = new List<Comentario>();
     }
 }

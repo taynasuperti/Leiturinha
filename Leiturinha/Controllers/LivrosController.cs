@@ -10,22 +10,23 @@ using Leiturinha.Models;
 
 namespace Leiturinha.Controllers
 {
-    public class GenerosController : Controller
+    public class LivrosController : Controller
     {
         private readonly AppDbContext _context;
 
-        public GenerosController(AppDbContext context)
+        public LivrosController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: Generos
+        // GET: Livros
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Generos.ToListAsync());
+            var appDbContext = _context.Livros.Include(l => l.ClassificacaoIndicativa).Include(l => l.Genero);
+            return View(await appDbContext.ToListAsync());
         }
 
-        // GET: Generos/Details/5
+        // GET: Livros/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +34,45 @@ namespace Leiturinha.Controllers
                 return NotFound();
             }
 
-            var genero = await _context.Generos
+            var livro = await _context.Livros
+                .Include(l => l.ClassificacaoIndicativa)
+                .Include(l => l.Genero)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (genero == null)
+            if (livro == null)
             {
                 return NotFound();
             }
 
-            return View(genero);
+            return View(livro);
         }
 
-        // GET: Generos/Create
+        // GET: Livros/Create
         public IActionResult Create()
         {
+            ViewData["ClassificacaoIndicativaId"] = new SelectList(_context.Classificacoes, "Id", "FaixaEtaria");
+            ViewData["GeneroId"] = new SelectList(_context.Generos, "Id", "Nome");
             return View();
         }
 
-        // POST: Generos/Create
+        // POST: Livros/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome")] Genero genero)
+        public async Task<IActionResult> Create([Bind("Id,Titulo,Autor,Descricao,Capa,Destaque,GeneroId,ClassificacaoIndicativaId")] Livro livro)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(genero);
+                _context.Add(livro);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(genero);
+            ViewData["ClassificacaoIndicativaId"] = new SelectList(_context.Classificacoes, "Id", "FaixaEtaria", livro.ClassificacaoIndicativaId);
+            ViewData["GeneroId"] = new SelectList(_context.Generos, "Id", "Nome", livro.GeneroId);
+            return View(livro);
         }
 
-        // GET: Generos/Edit/5
+        // GET: Livros/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +80,24 @@ namespace Leiturinha.Controllers
                 return NotFound();
             }
 
-            var genero = await _context.Generos.FindAsync(id);
-            if (genero == null)
+            var livro = await _context.Livros.FindAsync(id);
+            if (livro == null)
             {
                 return NotFound();
             }
-            return View(genero);
+            ViewData["ClassificacaoIndicativaId"] = new SelectList(_context.Classificacoes, "Id", "FaixaEtaria", livro.ClassificacaoIndicativaId);
+            ViewData["GeneroId"] = new SelectList(_context.Generos, "Id", "Nome", livro.GeneroId);
+            return View(livro);
         }
 
-        // POST: Generos/Edit/5
+        // POST: Livros/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome")] Genero genero)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Titulo,Autor,Descricao,Capa,Destaque,GeneroId,ClassificacaoIndicativaId")] Livro livro)
         {
-            if (id != genero.Id)
+            if (id != livro.Id)
             {
                 return NotFound();
             }
@@ -97,12 +106,12 @@ namespace Leiturinha.Controllers
             {
                 try
                 {
-                    _context.Update(genero);
+                    _context.Update(livro);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GeneroExists(genero.Id))
+                    if (!LivroExists(livro.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +122,12 @@ namespace Leiturinha.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(genero);
+            ViewData["ClassificacaoIndicativaId"] = new SelectList(_context.Classificacoes, "Id", "FaixaEtaria", livro.ClassificacaoIndicativaId);
+            ViewData["GeneroId"] = new SelectList(_context.Generos, "Id", "Nome", livro.GeneroId);
+            return View(livro);
         }
 
-        // GET: Generos/Delete/5
+        // GET: Livros/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,34 +135,36 @@ namespace Leiturinha.Controllers
                 return NotFound();
             }
 
-            var genero = await _context.Generos
+            var livro = await _context.Livros
+                .Include(l => l.ClassificacaoIndicativa)
+                .Include(l => l.Genero)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (genero == null)
+            if (livro == null)
             {
                 return NotFound();
             }
 
-            return View(genero);
+            return View(livro);
         }
 
-        // POST: Generos/Delete/5
+        // POST: Livros/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var genero = await _context.Generos.FindAsync(id);
-            if (genero != null)
+            var livro = await _context.Livros.FindAsync(id);
+            if (livro != null)
             {
-                _context.Generos.Remove(genero);
+                _context.Livros.Remove(livro);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool GeneroExists(int id)
+        private bool LivroExists(int id)
         {
-            return _context.Generos.Any(e => e.Id == id);
+            return _context.Livros.Any(e => e.Id == id);
         }
     }
 }

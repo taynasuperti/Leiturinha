@@ -10,13 +10,16 @@
             <div class="col-md-6">
                 @if (Model.Livro.Imagens != null && Model.Livro.Imagens.Any())
                 {
-                    <img class="img-fluid mb-5 mb-md-0" src="@Url.Content(Model.Livro.Imagens.First().CaminhoImagem)" alt="@Model.Livro.Titulo" />
+                    foreach (var imagem in Model.Livro.Imagens)
+                    {
+                        var caminho = imagem.CaminhoImagem.StartsWith("~") ? imagem.CaminhoImagem : "~" + imagem.CaminhoImagem;
+                        <img class="img-fluid mb-3" src="@Url.Content(caminho)" alt="@Model.Livro.Titulo" />
+                    }
                 }
                 else
                 {
-                    <img class="img-fluid mb-5 mb-md-0" src="@Url.Content("~/img/produto-sem-imagem.jpg")" alt="@Model.Livro.Titulo" />
+                    <img class="img-fluid mb-3" src="@Url.Content("~/img/produto-sem-imagem.jpg")" alt="@Model.Livro.Titulo" />
                 }
-
             </div>
             <div class="col-md-6">
                 <div class="small mb-1">Gênero: @Model.Livro.Genero.Nome</div>
@@ -31,7 +34,6 @@
     </div>
 </section>
 
-
 <!-- Comentários -->
 <section class="py-5 bg-white">
     <div class="container px-4 px-lg-5">
@@ -45,7 +47,7 @@
         <!-- Formulário de comentário -->
         <div class="row justify-content-center mb-5">
             <div class="col-md-8">
-                <form asp-controller="Comentarios" asp-action="Criar" method="post">
+                <form asp-controller="Comentarios" asp-action="Create" method="post">
                     <input type="hidden" name="LivroId" value="@Model.Livro.Id" />
                     <div class="form-group mb-3">
                         <textarea name="Texto" class="form-control" rows="4" placeholder="Escreva seu comentário aqui..." required></textarea>
@@ -82,8 +84,6 @@
     </div>
 </section>
 
-
-
 <!-- Livros semelhantes -->
 <section class="py-5 bg-light">
     <div class="container px-4 px-lg-5 mt-5">
@@ -102,7 +102,8 @@
                         <div class="card border-0 bg-white shadow-sm h-100">
                             @if (livro.Imagens != null && livro.Imagens.Any())
                             {
-                                <img class="card-img-top" src="@Url.Content(livro.Imagens.First().CaminhoImagem)" alt="@livro.Titulo" />
+                                var caminho = livro.Imagens.First().CaminhoImagem.StartsWith("~") ? livro.Imagens.First().CaminhoImagem : "~" + livro.Imagens.First().CaminhoImagem;
+                                <img class="card-img-top" src="@Url.Content(caminho)" alt="@livro.Titulo" />
                             }
                             else
                             {
@@ -120,9 +121,6 @@
                                 <div class="row">
                                     <div class="col-6 text-right"><strong>Classificação</strong></div>
                                     <div class="col-6">@livro.ClassificacaoIndicativa?.FaixaEtaria</div>
-                                </div>
-                                <div class="row">
-                                    @* <div class="col-6">@livro.MediaEstrelas.ToString("N1") ⭐</div> *@
                                 </div>
                             </div>
                             <a asp-controller="Home" asp-action="Livro" asp-route-id="@livro.Id" class="btn btn-primary px-4 mx-auto mb-4">Ver mais</a>

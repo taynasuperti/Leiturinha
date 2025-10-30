@@ -10,22 +10,23 @@ using Leiturinha.Models;
 
 namespace Leiturinha.Controllers
 {
-    public class GenerosController : Controller
+    public class ComentariosController : Controller
     {
         private readonly AppDbContext _context;
 
-        public GenerosController(AppDbContext context)
+        public ComentariosController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: Generos
+        // GET: Comentarios
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Generos.ToListAsync());
+            var appDbContext = _context.Comentarios.Include(c => c.Livro).Include(c => c.Usuario);
+            return View(await appDbContext.ToListAsync());
         }
 
-        // GET: Generos/Details/5
+        // GET: Comentarios/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +34,45 @@ namespace Leiturinha.Controllers
                 return NotFound();
             }
 
-            var genero = await _context.Generos
+            var comentario = await _context.Comentarios
+                .Include(c => c.Livro)
+                .Include(c => c.Usuario)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (genero == null)
+            if (comentario == null)
             {
                 return NotFound();
             }
 
-            return View(genero);
+            return View(comentario);
         }
 
-        // GET: Generos/Create
+        // GET: Comentarios/Create
         public IActionResult Create()
         {
+            ViewData["LivroId"] = new SelectList(_context.Livros, "Id", "Autor");
+            ViewData["UsuarioId"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
 
-        // POST: Generos/Create
+        // POST: Comentarios/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome")] Genero genero)
+        public async Task<IActionResult> Create([Bind("Id,LivroId,UsuarioId,DataComentario,TextoComentario")] Comentario comentario)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(genero);
+                _context.Add(comentario);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(genero);
+            ViewData["LivroId"] = new SelectList(_context.Livros, "Id", "Autor", comentario.LivroId);
+            ViewData["UsuarioId"] = new SelectList(_context.Users, "Id", "Id", comentario.UsuarioId);
+            return View(comentario);
         }
 
-        // GET: Generos/Edit/5
+        // GET: Comentarios/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +80,24 @@ namespace Leiturinha.Controllers
                 return NotFound();
             }
 
-            var genero = await _context.Generos.FindAsync(id);
-            if (genero == null)
+            var comentario = await _context.Comentarios.FindAsync(id);
+            if (comentario == null)
             {
                 return NotFound();
             }
-            return View(genero);
+            ViewData["LivroId"] = new SelectList(_context.Livros, "Id", "Autor", comentario.LivroId);
+            ViewData["UsuarioId"] = new SelectList(_context.Users, "Id", "Id", comentario.UsuarioId);
+            return View(comentario);
         }
 
-        // POST: Generos/Edit/5
+        // POST: Comentarios/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome")] Genero genero)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,LivroId,UsuarioId,DataComentario,TextoComentario")] Comentario comentario)
         {
-            if (id != genero.Id)
+            if (id != comentario.Id)
             {
                 return NotFound();
             }
@@ -97,12 +106,12 @@ namespace Leiturinha.Controllers
             {
                 try
                 {
-                    _context.Update(genero);
+                    _context.Update(comentario);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GeneroExists(genero.Id))
+                    if (!ComentarioExists(comentario.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +122,12 @@ namespace Leiturinha.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(genero);
+            ViewData["LivroId"] = new SelectList(_context.Livros, "Id", "Autor", comentario.LivroId);
+            ViewData["UsuarioId"] = new SelectList(_context.Users, "Id", "Id", comentario.UsuarioId);
+            return View(comentario);
         }
 
-        // GET: Generos/Delete/5
+        // GET: Comentarios/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,34 +135,36 @@ namespace Leiturinha.Controllers
                 return NotFound();
             }
 
-            var genero = await _context.Generos
+            var comentario = await _context.Comentarios
+                .Include(c => c.Livro)
+                .Include(c => c.Usuario)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (genero == null)
+            if (comentario == null)
             {
                 return NotFound();
             }
 
-            return View(genero);
+            return View(comentario);
         }
 
-        // POST: Generos/Delete/5
+        // POST: Comentarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var genero = await _context.Generos.FindAsync(id);
-            if (genero != null)
+            var comentario = await _context.Comentarios.FindAsync(id);
+            if (comentario != null)
             {
-                _context.Generos.Remove(genero);
+                _context.Comentarios.Remove(comentario);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool GeneroExists(int id)
+        private bool ComentarioExists(int id)
         {
-            return _context.Generos.Any(e => e.Id == id);
+            return _context.Comentarios.Any(e => e.Id == id);
         }
     }
 }
