@@ -90,6 +90,25 @@ namespace Leiturinha.Controllers
             return View(livroVM);
         }
 
+        public IActionResult Livros()
+        {
+            var livros = _db.Livros
+                .Include(l => l.Genero)
+                .Include(l => l.ClassificacaoIndicativa)
+                .Include(l => l.Imagens)
+                .Include(l => l.Avaliacoes)
+                .ToList();
+
+            var livrosComMedia = livros.Select(l => new LivroVM
+            {
+                Livro = l,
+                MediaEstrelas = l.Avaliacoes.Any() ? l.Avaliacoes.Average(a => a.Nota) : 0
+            }).ToList();
+
+            return View(livrosComMedia);
+        }
+
+
         public IActionResult Privacy()
         {
             return View();

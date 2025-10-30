@@ -26,24 +26,28 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav font-weight-bold mx-auto py-0">
                         <a asp-controller="Home" asp-action="Index" class="nav-item nav-link active">Home</a>
-                        <a asp-controller="Home" asp-action="Details" class="nav-item nav-link">Destaques</a>
-                        <a asp-controller="Livro" asp-action="Livros" class="nav-item nav-link">Livros</a>
+                        <a href="/Home/Index#destaques" class="nav-item nav-link @(ViewData["Title"]?.ToString() == "Destaques" ? "active" : "")">Destaques</a>
+                        <a asp-controller="Home" asp-action="Livros" class="nav-item nav-link">Livros</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Mais</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Gêneros</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a asp-controller="Blog" asp-action="Index" class="dropdown-item">Blog</a>
-                                <a asp-controller="Blog" asp-action="Detalhe" class="dropdown-item">Detalhes</a>
+                                <a asp-controller="Generos" asp-action="Genero" asp-route-nome="Aventura" class="dropdown-item">Aventura</a>
+                                <a asp-controller="Generos" asp-action="Genero" asp-route-nome="Contos" class="dropdown-item">Contos</a>
+                                <a asp-controller="Generos" asp-action="Genero" asp-route-nome="Fábulas" class="dropdown-item">Fábulas</a>
+                                <a asp-controller="Generos" asp-action="Genero" asp-route-nome="Fantasia" class="dropdown-item">Fantasia</a>
+                                <a asp-controller="Generos" asp-action="Genero" asp-route-nome="Poesia infantil" class="dropdown-item">Poesia infantil</a>
                             </div>
                         </div>
-                        <a asp-controller="Contato" asp-action="Index" class="nav-item nav-link">Contato</a>
+
                     </div>
-                    <a asp-controller="Turmas" asp-action="Inscricao" class="btn btn-primary px-4">Inscreva-se</a>
+                    <a asp-controller="Account" asp-action="Registro" class="btn btn-primary px-4">Cadastre-se</a>
                 </div>
             </nav>
         </div>
         <!-- Navbar End -->
-
     </header>
+
+
 
     <main role="main">
         @RenderBody()

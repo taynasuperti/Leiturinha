@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Leiturinha.Data;
 using Leiturinha.Models;
+using Leiturinha.ViewModels;
 
 namespace Leiturinha.Controllers
 {
@@ -50,8 +51,6 @@ namespace Leiturinha.Controllers
         }
 
         // POST: Generos/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome")] Genero genero)
@@ -82,8 +81,6 @@ namespace Leiturinha.Controllers
         }
 
         // POST: Generos/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome")] Genero genero)
@@ -152,6 +149,31 @@ namespace Leiturinha.Controllers
         private bool GeneroExists(int id)
         {
             return _context.Generos.Any(e => e.Id == id);
+        }
+
+        public IActionResult Genero(string nome)
+        {
+            if (string.IsNullOrEmpty(nome))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var livros = _context.Livros
+                .Include(l => l.Genero)
+                .Include(l => l.ClassificacaoIndicativa)
+                .Include(l => l.Imagens)
+                .Include(l => l.Avaliacoes)
+                .Where(l => l.Genero.Nome.ToLower() == nome.ToLower())
+                .ToList();
+
+            var livrosComMedia = livros.Select(l => new LivroVM
+            {
+                Livro = l,
+                MediaEstrelas = l.Avaliacoes.Any() ? l.Avaliacoes.Average(a => a.Nota) : 0
+            }).ToList();
+
+            ViewData["GeneroSelecionado"] = nome;
+            return View(livrosComMedia);
         }
     }
 }
