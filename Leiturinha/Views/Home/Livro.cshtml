@@ -8,19 +8,61 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
             <div class="col-md-6">
-                @if (Model.Livro.Imagens != null && Model.Livro.Imagens.Any())
-                {
-                    foreach (var imagem in Model.Livro.Imagens)
+                @{
+                    var imagens = Model.Livro.Imagens?.ToList() ?? new List<Leiturinha.Models.ImagemLivro>();
+
+                    // Adiciona a capa como primeira imagem, se estiver separada
+                    if (!string.IsNullOrEmpty(Model.Livro.Capa))
                     {
-                        var caminho = imagem.CaminhoImagem.StartsWith("~") ? imagem.CaminhoImagem : "~" + imagem.CaminhoImagem;
-                        <img class="img-fluid mb-3" src="@Url.Content(caminho)" alt="@Model.Livro.Titulo" />
+                        imagens.Insert(0, new Leiturinha.Models.ImagemLivro { CaminhoImagem = Model.Livro.Capa });
                     }
+                }
+
+                @if (!imagens.Any())
+                {
+                    <img class="img-fluid mb-3 img-livro" src="@Url.Content("~/img/produto-sem-imagem.jpg")" alt="@Model.Livro.Titulo" />
                 }
                 else
                 {
-                    <img class="img-fluid mb-3" src="@Url.Content("~/img/produto-sem-imagem.jpg")" alt="@Model.Livro.Titulo" />
+                    <div class="card-livro carousel-wrapper">
+                        <div id="carouselLivro" class="carousel slide mb-3" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                @for (int i = 0; i < imagens.Count; i++)
+                                {
+                                    <button type="button" data-bs-target="#carouselLivro" data-bs-slide-to="@i"
+                                            class="@(i == 0 ? "active" : "")"
+                                            aria-current="@(i == 0 ? "true" : "false")"
+                                            aria-label="Slide @(i + 1)">
+                                    </button>
+                                }
+                            </div>
+                            <div class="carousel-inner">
+                                @for (int i = 0; i < imagens.Count; i++)
+                                {
+                                    var imagem = imagens[i];
+                                    var caminho = !string.IsNullOrEmpty(imagem?.CaminhoImagem)
+                                    ? (imagem.CaminhoImagem.StartsWith("~") ? imagem.CaminhoImagem : "~" + imagem.CaminhoImagem)
+                                    : "~/img/livro-sem-imagem.jpg";
+
+                                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                                        <img class="d-block w-100 img-livro" src="@Url.Content(caminho)" alt="@Model.Livro.Titulo" />
+                                    </div>
+                                }
+                            </div>
+                            <button class="carousel-control-prev custom-arrow" type="button" data-bs-target="#carouselLivro" data-bs-slide="prev">
+                                <span aria-hidden="true">&lt;</span>
+                                <span class="visually-hidden">Anterior</span>
+                            </button>
+                            <button class="carousel-control-next custom-arrow" type="button" data-bs-target="#carouselLivro" data-bs-slide="next">
+                                <span aria-hidden="true">&gt;</span>
+                                <span class="visually-hidden">Próximo</span>
+                            </button>
+
+                        </div>
+                    </div>
                 }
             </div>
+
             <div class="col-md-6">
                 <div class="small mb-1">Gênero: @Model.Livro.Genero.Nome</div>
                 <h1 class="display-5 fw-bolder">@Model.Livro.Titulo</h1>

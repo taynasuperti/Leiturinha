@@ -9,4 +9,5 @@ public class LivroVM
     public double MediaEstrelas { get; set; }
     public List<Comentario> Comentarios { get; set; }
 
+    public List<ImagemLivro> Imagens { get; set; } = new();
 }

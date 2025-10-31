@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -37,7 +37,9 @@ namespace Leiturinha.Controllers
             var livro = await _context.Livros
                 .Include(l => l.ClassificacaoIndicativa)
                 .Include(l => l.Genero)
+                .Include(l => l.Imagens)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (livro == null)
             {
                 return NotFound();
@@ -45,6 +47,7 @@ namespace Leiturinha.Controllers
 
             return View(livro);
         }
+
 
         // GET: Livros/Create
         public IActionResult Create()
