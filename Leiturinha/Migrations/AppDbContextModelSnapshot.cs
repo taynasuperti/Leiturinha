@@ -17,7 +17,7 @@ namespace Leiturinha.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.2")
+                .HasAnnotation("ProductVersion", "8.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -477,7 +477,7 @@ namespace Leiturinha.Migrations
                             Descricao = "Nino Aprende a Esperar, Nino e o Som Misterioso e Nino e o Tesouro Esquecido são três histórias ilustradas e encantadoras que acompanham o esquilo Nino enquanto descobre valores importantes como a paciência, a coragem e a honestidade.",
                             Destaque = false,
                             GeneroId = 1,
-                            Titulo = "As Aventuras do Nino - Volume 1: Nino Aprende a Esperar & Nino e o Som Misterioso & Nino e o Tesouro Esquecido"
+                            Titulo = "As Aventuras do Nino"
                         },
                         new
                         {
@@ -686,7 +686,7 @@ namespace Leiturinha.Migrations
                             Descricao = "Alice segue o Coelho Branco até uma toca e vive aventuras maravilhosas.",
                             Destaque = true,
                             GeneroId = 4,
-                            Titulo = "Alice no País das Maravilhas (Classic Edition)"
+                            Titulo = "Alice no País das Maravilhas"
                         },
                         new
                         {
@@ -815,7 +815,7 @@ namespace Leiturinha.Migrations
                         {
                             Id = "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "eeba1fbb-e629-4137-a093-dcfa03b81564",
+                            ConcurrencyStamp = "e21868fa-b0ca-4f0c-9ea0-95e95874b5ad",
                             DataNascimento = new DateTime(2006, 11, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "taynasuperti@gmail.com",
                             EmailConfirmed = true,
@@ -824,9 +824,9 @@ namespace Leiturinha.Migrations
                             Nome = "Tayná Carolina Miguel Superti",
                             NormalizedEmail = "TAYNASUPERTI@GMAIL.COM",
                             NormalizedUserName = "TAYNASUPERTI",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJK9qjoK7u/7WhxkuIzrubi2SP8Bw+0hZleqPDX8FxmKNR1WBv3bHXOPL0eaquaVOw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGys3FRV88ZqFMQ7QN8KmbvpIn9nIXWFhJl3I+aFoKtKOrcoNePXrRObxDx48Z59JA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a1ebc8cd-8f43-43eb-91f9-937235843b9a",
+                            SecurityStamp = "251d4433-e6db-411f-8b34-aacbb95ebd46",
                             TwoFactorEnabled = false,
                             UserName = "taynasuperti"
                         });

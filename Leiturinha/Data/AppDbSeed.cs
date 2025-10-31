@@ -98,7 +98,7 @@ namespace Leiturinha.Data
                new Livro
                {
                    Id = 8,
-                   Titulo = "As Aventuras do Nino - Volume 1: Nino Aprende a Esperar & Nino e o Som Misterioso & Nino e o Tesouro Esquecido",
+                   Titulo = "As Aventuras do Nino",
                    Autor = "Joana Bragança",
                    Descricao = "Nino Aprende a Esperar, Nino e o Som Misterioso e Nino e o Tesouro Esquecido são três histórias ilustradas e encantadoras que acompanham o esquilo Nino enquanto descobre valores importantes como a paciência, a coragem e a honestidade.",
                    Capa = "~/img/8/as-aventuras-de-nino1.jpg",
@@ -307,7 +307,7 @@ namespace Leiturinha.Data
                new Livro
                {
                    Id = 27,
-                   Titulo = "Alice no País das Maravilhas (Classic Edition)",
+                   Titulo = "Alice no País das Maravilhas",
                    Autor = "Lewis Carroll",
                    Descricao = "Alice segue o Coelho Branco até uma toca e vive aventuras maravilhosas.",
                    Capa = "~/img/40/alice-no-pais-das-maravilhas1.jpg",
