@@ -7,19 +7,19 @@
     <div class="container-fluid bg-primary px-0 px-md-5 mb-5">
       <div class="row align-items-center px-3">
         <div class="col-lg-6 text-center text-lg-left">
-          <h1 class="display-3 font-weight-bold text-white">
+          <h1 class="display-3 font-weight-bold">
             LEITURINHA
           </h1>
-          <p class="text-white mb-4">
+          <p class="mb-4">
                 O <strong>Leiturinha</strong> nasceu para que a escolha de livros infantis se torne um momento cheio de significado. Aqui, pais, professores e responsáveis podem descobrir novas leituras, deixar avaliações e compartilhar como foi a experiência com cada história.
           </p>
-            <p class="text-white mb-4">
+            <p class="mb-4">
                 Mais do que um espaço de opiniões, o <strong>Leiturinha</strong> é um cantinho de troca e afeto — onde cada resenha ajuda outras famílias a encontrar livros que encantem, ensinem e criem memórias.
             </p>
             <a asp-controller="Home" asp-action="Livros" class="btn btn-secondary mt-1 py-3 px-5">Ver todos os livros</a>
         </div>
         <div class="col-lg-6 text-center text-lg-right">
-          <img class="img-fluid mt-5" src="~/img/header/header1.png" alt="" />
+          <img class="img-header img-fluid mt-5" src="~/img/header/header3.jpg" alt="" />
         </div>
       </div>
 
@@ -31,7 +31,7 @@
 <section id="destaques" class="py-5 bg-light">
     <div class="container px-4 px-lg-5">
         <div class="text-center pb-4">
-            <h1 class="mb-4">Descubra os Livros em Destaque</h1>
+            <h1 class="mb-4">Explore todos os Livros em Destaque</h1>
         </div>
         <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center">
             @if (Model.Destaques != null && Model.Destaques.Any())
@@ -75,7 +75,7 @@
 
                             </div>
 
-                            <a asp-controller="Home" asp-action="Livro" asp-route-id="@livro.Id" class="btn btn-primary px-4 mx-auto mb-4">Ver mais</a>
+                            <a asp-controller="Home" asp-action="Livro" asp-route-id="@livro.Id" class="btn btn-ver-mais mx-auto mb-4">Ver mais</a>
                         </div>
                     </div>
                 }
