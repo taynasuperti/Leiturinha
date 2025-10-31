@@ -92,3 +92,28 @@ a:hover {
     color: #FFF8DC; /* palha claro */
     margin-top: 10px !important;
 }
+
+.text-foto {
+    color:#401701;
+}
+
+.avatar-card {
+    background-color: #FFFDF5;
+    border: 2px dashed #CBAE88;
+    border-radius: 0.5rem;
+    color: #401701;
+    transition: border-color 0.3s ease;
+}
+
+.avatar-card:hover {
+   border-color: #D9A679;
+   box-shadow: 0 0 0 0.2rem rgba(217, 166, 121, 0.25);
+}
+
+.bg-avatar {
+    background-color: #FFFDF5;
+}
+
+.input-foto-hidden {
+    display: none !important;
+}

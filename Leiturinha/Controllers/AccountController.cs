@@ -114,34 +114,50 @@ public class AccountController : Controller
             usuario.Email = registro.Email;
             usuario.NormalizedEmail = registro.Email.ToUpper();
             usuario.EmailConfirmed = true;
+
             var result = await _userManager.CreateAsync(usuario, registro.Senha);
 
             if (result.Succeeded)
             {
-                _logger.LogInformation($"Novo usuário rgistrado com o email {registro.Email}.");
+                _logger.LogInformation($"Novo usuário registrado com o email {registro.Email}.");
 
                 await _userManager.AddToRoleAsync(usuario, "Cliente");
 
-                if (registro.Foto != null)
+                // Upload da foto de perfil
+                if (registro.Foto != null && registro.Foto.Length > 0)
                 {
                     string nomeArquivo = usuario.Id + Path.GetExtension(registro.Foto.FileName);
-                    string caminho = Path.Combine(_host.WebRootPath, @"img\usuarios");
-                    string novoArquivo = Path.Combine(caminho, nomeArquivo);
-                    using (var stream = new FileStream(novoArquivo, FileMode.Create))
+                    string pastaDestino = Path.Combine(_host.WebRootPath, "img", "usuarios");
+
+                    // Garante que a pasta existe
+                    if (!Directory.Exists(pastaDestino))
+                        Directory.CreateDirectory(pastaDestino);
+
+                    string caminhoCompleto = Path.Combine(pastaDestino, nomeArquivo);
+
+                    using (var stream = new FileStream(caminhoCompleto, FileMode.Create))
                     {
-                        registro.Foto.CopyTo(stream);
+                        await registro.Foto.CopyToAsync(stream);
                     }
-                    usuario.Foto = @"\img\usuarios\" + nomeArquivo;
+
+                    usuario.Foto = Path.Combine("/img/usuarios/", nomeArquivo).Replace("\\", "/");
+
+                    // Atualiza o usuário com o caminho da foto
+                    _db.Update(usuario);
                     await _db.SaveChangesAsync();
                 }
-                TempData["Success"] = "Conta Criada com Suceso!";
+
+                TempData["Success"] = "Conta criada com sucesso!";
                 return RedirectToAction(nameof(Login));
             }
+
             foreach (var error in result.Errors)
                 ModelState.AddModelError(string.Empty, TranslateIdentityErrors.TranslateErrorMessage(error.Code));
         }
+
         return View(registro);
     }
+
 
     public IActionResult AccessDenied()
     {

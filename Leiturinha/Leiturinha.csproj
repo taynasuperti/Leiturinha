@@ -122,6 +122,7 @@
     <Folder Include="wwwroot\img\49\" />
     <Folder Include="wwwroot\img\50\" />
     <Folder Include="wwwroot\img\header\" />
+    <Folder Include="wwwroot\img\usuarios\" />
   </ItemGroup>
 
   <ItemGroup>
