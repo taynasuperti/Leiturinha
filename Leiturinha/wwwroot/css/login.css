@@ -1,51 +1,94 @@
-html,
+/* Fundo geral da tela */
 body {
-  height: 100%;
+    background-color: #faecc0f6; /* tom palha quente */
+    color: #401701;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-body {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
+/* Card de registro */
+.card {
+    background-color: #ffeba8;
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px !important;
+    margin-top: 15px !important;
 }
 
-.form-signin {
-  width: 100%;
-  max-width: 420px;
-  padding: 15px;
-  margin: auto;
+/* Cabeçalho com logo */
+.card-header {
+    background-color: transparent;
+    text-align: center;
+    padding: 5px;
 }
 
-.form-signup {
-  width: 100%;
-  max-width: 600px;
-  padding: 15px;
-  margin: auto;
+/* Inputs */
+.form-control {
+    border: 2px solid #CBAE88;
+    border-radius: 0.5rem;
+    background-color: #FFFDF5;
+    color: #401701;
 }
 
-.bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+.form-control:focus {
+    border-color: #D9A679;
+    box-shadow: 0 0 0 0.2rem rgba(217, 166, 121, 0.25);
 }
 
-@media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-    }
+/* Botão de criar conta */
+.btn-primary {
+    background: #9b5d0d;
+    padding: 0.6rem 1.2rem; /* aumenta a altura e largura interna */
+    font-weight: 600; /* deixa o texto mais encorpado */
+    border-radius: 2rem; /* bordas mais suaves */
+    font-size: 1rem; /* tamanho de fonte confortável */
+    border: none;
+    width: 120px;
+    transition: background-color 0.3s ease;
 }
 
-.cursor-pointer {
-  cursor: pointer;
+.btn-primary:hover {
+    background-color: #9b5d0d;
 }
 
-.form-check-input:checked {
-  background-color: rgb(220, 53, 69);
-  border-color: darkred;
+
+/* Avatar */
+#PreviewImage {
+    border: 2px dashed #CBAE88;
+    background-color: #FFFDF5;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+/* Título ou mensagens */
+h1, h2, h3, h4, h5 {
+    color: #401701;
+}
+
+.img-logo {
+    height: 100%;
+    width: 50%;
+    object-fit: cover; /* garante que a imagem preencha sem distorcer */
+}
+
+.small {
+    color: #401701;
+}
+
+.small:hover {
+    color: #401701;
+}
+
+a {
+    color: #401701;
+}
+
+a:hover {
+    color: #401701;
+}
+
+.bg-footer {
+    background-color: #401701; /* marrom escuro */
+    color: #FFF8DC; /* palha claro */
+    margin-top: 10px !important;
 }
