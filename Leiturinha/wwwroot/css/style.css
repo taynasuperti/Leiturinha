@@ -10764,7 +10764,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .btn-cadastro {
-    background: #9b5d0d;
+    background:     ;
     padding: 0.6rem 1.2rem; /* aumenta a altura e largura interna */
     font-weight: 600; /* deixa o texto mais encorpado */
     border-radius: 2rem; /* bordas mais suaves */
@@ -10792,6 +10792,8 @@ a.text-dark:hover, a.text-dark:focus {
     display: block;
 }
 
+/*estilização do carrossel*/
+
 .carousel-wrapper {
     margin-bottom: 5rem;
 }
@@ -10801,9 +10803,25 @@ a.text-dark:hover, a.text-dark:focus {
     border-radius: 0.75rem;
     padding: 0;
     background-color: #fffaf3;
-    display: inline-block;
     width: 100%;
+    height: 500px; /* altura fixa */
     overflow: hidden;
+    position: relative;
+}
+
+/* Área do carrossel */
+.carousel-inner,
+.carousel-item {
+    height: 100%;
+    width: 100%;
+}
+
+/* Imagem ocupa todo o espaço do card */
+.img-livro {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+    display: block;
 }
 
 /* Indicadores */
@@ -10812,18 +10830,8 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 /* Setas visíveis e estilizadas */
-.custom-icon {
-    background-color: #401701;
-    border-radius: 50%;
-    width: 1rem;
-    height: 1rem;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    opacity: 0.8;
-}
-
 .custom-arrow {
-    color: #401701; /* marrom */
+    color: #401701;
     font-size: 2rem;
     font-weight: bold;
     background: none;
@@ -10833,7 +10841,7 @@ a.text-dark:hover, a.text-dark:focus {
     transform: translateY(-50%);
     z-index: 2;
     padding: 0 1rem;
-    opacity: 1 !important; /* REMOVE a transparência */
+    opacity: 1 !important;
 }
 
 .carousel-control-prev.custom-arrow {
@@ -10844,11 +10852,24 @@ a.text-dark:hover, a.text-dark:focus {
     right: 0;
 }
 
-
-.carousel-control-prev-icon.custom-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.5 0L4.5 1 7 3.5 4.5 6 5.5 7 9 3.5z'/%3E%3C/svg%3E");
+/*estrelas*/
+.rating-stars .star {
+    cursor: pointer;
+    transition: transform 0.2s;
 }
 
-.carousel-control-next-icon.custom-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.5 0L1.5 1 4 3.5 1.5 6 2.5 7 6 3.5z'/%3E%3C/svg%3E");
+.rating-stars .star:hover {
+    transform: scale(1.2);
+}
+
+.classificacao-indicativa {
+    color: #9b5d0d;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.genero {
+    color: #9b5d0d;
+    font-size: 1rem;
+    font-weight:500 ;
 }

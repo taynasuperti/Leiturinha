@@ -31,5 +31,6 @@ namespace Leiturinha.Models
         public ICollection<ImagemLivro> Imagens { get; set; } = new List<ImagemLivro>();
         public ICollection<Avaliacao> Avaliacoes { get; set; } = new List<Avaliacao>();
         public ICollection<Comentario> Comentarios { get; set; } = new List<Comentario>();
+
     }
 }

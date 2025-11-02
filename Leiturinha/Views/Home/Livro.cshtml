@@ -45,7 +45,7 @@
                                     : "~/img/livro-sem-imagem.jpg";
 
                                     <div class="carousel-item @(i == 0 ? "active" : "")">
-                                        <img class="d-block w-100 img-livro" src="@Url.Content(caminho)" alt="@Model.Livro.Titulo" />
+                                        <img class="img-livro" src="@Url.Content(caminho)" alt="@Model.Livro.Titulo" />
                                     </div>
                                 }
                             </div>
@@ -57,20 +57,33 @@
                                 <span aria-hidden="true">&gt;</span>
                                 <span class="visually-hidden">Próximo</span>
                             </button>
-
                         </div>
                     </div>
                 }
             </div>
 
+
             <div class="col-md-6">
-                <div class="small mb-1">Gênero: @Model.Livro.Genero.Nome</div>
+                <div class="genero small mb-1">Gênero: @Model.Livro.Genero.Nome</div>
                 <h1 class="display-5 fw-bolder">@Model.Livro.Titulo</h1>
                 <div class="fs-5 mb-3">
-                    <span class="badge bg-secondary me-2">Classificação: @Model.Livro.ClassificacaoIndicativa.FaixaEtaria</span>
-                    <span class="badge bg-warning text-dark">Média: @Model.MediaEstrelas.ToString("N1") ⭐</span>
+                    <span class="classificacao-indicativa badge me-2">Classificação: @Model.Livro.ClassificacaoIndicativa.FaixaEtaria</span>
                 </div>
                 <p class="lead mb-4">@Model.Livro.Descricao</p>
+                <div class="d-flex justify-content-center mt-4 rating-stars">
+                    <ul id="stars" class="list-unstyled d-flex gap-2">
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            <li class="star text-secondary" data-value="@i">
+                                <i class="bi bi-star fs-2"></i> <!-- ícone vazado -->
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <input type="hidden" id="livroId" value="@Model.Livro.Id" />
+
+
+
             </div>
         </div>
     </div>
@@ -200,3 +213,7 @@
         </div>
     </div>
 </section>
+@section Scripts {
+    <script src="~/js/avaliacao.js"></script>
+}
+
