@@ -39,10 +39,6 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <a class="nav-link mt-3" asp-controller="Admin" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
-                        </a>
                         <a class="nav-link" asp-controller="Generos" asp-action="Index">
                             <div class="sb-nav-link-icon"><i class="fas fa-tags"></i></div>
                             Gêneros
@@ -54,6 +50,14 @@
                         <a class="nav-link" asp-controller="Comentarios" asp-action="Index">
                             <div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
                             Comentários
+                        </a>
+                        <a class="nav-link mt-3" asp-controller="Avaliacoes" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-star"></i></div>
+                            Avaliações
+                        </a>
+                        <a class="nav-link mt-3" asp-controller="Avaliacoes" asp-action="MediaPorLivro">
+                            <div class="sb-nav-link-icon"><i class="fas fa-star-half-alt"></i></div>
+                            Média de Avaliações
                         </a>
                     </div>
                 </div>

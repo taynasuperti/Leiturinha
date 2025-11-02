@@ -10764,7 +10764,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .btn-cadastro {
-    background:     ;
+    background: #9b5d0d;
     padding: 0.6rem 1.2rem; /* aumenta a altura e largura interna */
     font-weight: 600; /* deixa o texto mais encorpado */
     border-radius: 2rem; /* bordas mais suaves */

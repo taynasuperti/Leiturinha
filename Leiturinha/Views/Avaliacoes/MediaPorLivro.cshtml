@@ -1,0 +1,22 @@
+﻿@model List<Leiturinha.ViewModels.MediaPorLivro>
+
+<h2>Média de Avaliações por Livro</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Média de Estrelas</th>
+            <th>Total de Avaliações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Titulo</td>
+                <td>@item.MediaEstrelas.ToString("N1")</td>
+                <td>@item.TotalAvaliacoes</td>
+            </tr>
+        }
+    </tbody>
+</table>

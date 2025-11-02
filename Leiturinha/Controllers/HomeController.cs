@@ -86,7 +86,7 @@ namespace Leiturinha.Controllers
                 Semelhantes = semelhantes,
                 MediaEstrelas = mediaEstrelas
             };
-
+            ViewBag.ExibirMedia = User.IsInRole("Admin");
             return View(livroVM);
         }
 

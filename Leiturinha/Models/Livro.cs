@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Leiturinha.ViewModels;
+using System.ComponentModel.DataAnnotations;
 
 namespace Leiturinha.Models
 {

@@ -4,6 +4,7 @@ using Leiturinha.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Leiturinha.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251102211848_AjusteNotaDouble")]
+    partial class AjusteNotaDouble
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,6 +43,7 @@ namespace Leiturinha.Migrations
                         .HasColumnType("float");
 
                     b.Property<string>("UsuarioId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -814,7 +818,7 @@ namespace Leiturinha.Migrations
                         {
                             Id = "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fe82f5d5-fae9-40e8-b93f-2be5d2415119",
+                            ConcurrencyStamp = "27c44aba-2182-4ac8-a13f-ce69a2f2aa84",
                             DataNascimento = new DateTime(2006, 11, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "taynasuperti@gmail.com",
                             EmailConfirmed = true,
@@ -823,9 +827,9 @@ namespace Leiturinha.Migrations
                             Nome = "Tayná Carolina Miguel Superti",
                             NormalizedEmail = "TAYNASUPERTI@GMAIL.COM",
                             NormalizedUserName = "TAYNASUPERTI",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAnn5BbwkonPozqX+AGFSrcwOhHka/DDKsU7x1LYWumpvBidSQryP/pE7HeBxT75qg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAED9m6wOc3A+Ngfl5j21Qj/RCOfrgeV5Vtd6UUUFZ+8QLvTSZApGWIKUhar5rL4prPg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "05bfcf8f-452d-48d2-b66d-131692fb9a74",
+                            SecurityStamp = "416c56a7-d31d-441b-bc84-065ffff669d1",
                             TwoFactorEnabled = false,
                             UserName = "taynasuperti"
                         });
@@ -1011,7 +1015,9 @@ namespace Leiturinha.Migrations
 
                     b.HasOne("Leiturinha.Models.Usuario", "Usuario")
                         .WithMany()
-                        .HasForeignKey("UsuarioId");
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Livro");
 
