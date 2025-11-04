@@ -4698,8 +4698,8 @@ input[type="button"].btn-block {
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 5px;
-    max-width: 800px !important;
-    max-height: 650px !important;
+    max-width: 820px !important;
+    max-height: 750px !important;
 }
 
     .card > hr {
@@ -4734,6 +4734,7 @@ input[type="button"].btn-block {
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1.25rem;
+    margin-bottom: 2rem;
 }
 
 .card-title {
@@ -10872,4 +10873,80 @@ a.text-dark:hover, a.text-dark:focus {
     color: #9b5d0d;
     font-size: 1rem;
     font-weight:500 ;
+}
+
+/*seção de comentários*/
+.card-comentario {
+    max-width: 600px;
+    background-color: #fff8e1;
+    border: 1px solid #401701;
+    color: #9B5D0D;
+    border-radius: 9px;
+}
+
+.comentario-input {
+    background-color: #fff8e1;
+    color: #9B5D0D;
+    box-shadow: 0 0 0 0.10rem rgba(155, 93, 13, 0.5); /* luz ao focar */
+    font-size: 14px;
+    padding: 12px;
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+}
+
+.comentario-input:focus {
+     background-color: #fff8e1;
+     color: #9B5D0D;
+     outline: none;
+     box-shadow: 0 0 0 0.15rem rgba(155, 93, 13, 0.5); /* luz ao focar */
+}
+
+.comentario-input::placeholder {
+     color: #9B5D0D;
+     opacity: 1; /* garante visibilidade total */
+}
+
+.btn-comentario {
+    background-color: #9B5D0D;
+    color: #ffffff;
+    font-weight: 600; /* deixa o texto mais encorpado */
+    padding: 0.6rem 1.2rem; /* aumenta a altura e largura interna */
+    border-radius: 2rem; /* bordas mais suaves */
+    transition: background-color 0.3s ease;
+    border-radius: 2rem; /* bordas mais suaves */
+    font-size: 1rem; /* tamanho de fonte confortável */
+    display: block;
+    margin: 0.50rem auto 0 auto;
+}
+
+.btn-comentario:hover {
+    background-color: #7A450A;
+}
+
+.text-comentar {
+    color: #9b5d0d;
+}
+
+.text-data {
+    color: #401701;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: brightness(0) saturate(100%) invert(14%) sepia(60%) saturate(500%) hue-rotate(0deg) brightness(100%) contrast(100%);
+    opacity: 1;
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    filter: brightness(0) saturate(100%) invert(14%) sepia(60%) saturate(500%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
+
+
+.card-comentario,
+.comentario-input {
+    max-width: 600px !important;
+    margin: 0 auto;
 }

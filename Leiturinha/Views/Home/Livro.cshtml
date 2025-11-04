@@ -64,10 +64,13 @@
 
 
             <div class="col-md-6">
-                <div class="genero small mb-1">Gênero: @Model.Livro.Genero.Nome</div>
+                <div class="genero small mb-1 fw-bold">Gênero: @Model.Livro.Genero.Nome</div>
                 <h1 class="display-5 fw-bolder">@Model.Livro.Titulo</h1>
                 <div class="fs-5 mb-3">
-                    <span class="classificacao-indicativa badge me-2">Classificação: @Model.Livro.ClassificacaoIndicativa.FaixaEtaria</span>
+                    <span class="classificacao-indicativa badge me-2 fw-bold">Classificação: @Model.Livro.ClassificacaoIndicativa.FaixaEtaria</span>
+                </div>
+                <div class="fs-5 mb-3">
+                    <span class="classificacao-indicativa badge me-2 fw-bold">Autor: @Model.Livro.Autor</span>
                 </div>
                 <p class="lead mb-4">@Model.Livro.Descricao</p>
                 <div class="d-flex justify-content-center mt-4 rating-stars">
@@ -90,12 +93,9 @@
 </section>
 
 <!-- Comentários -->
-<section class="py-5 bg-white">
+<section class="py-5" style="background-color: #FFEBA8;">
     <div class="container px-4 px-lg-5">
         <div class="text-center pb-4">
-            <p class="section-title px-5">
-                <span class="px-2">Comentários</span>
-            </p>
             <h2 class="mb-4">O que você achou deste livro?</h2>
         </div>
 
@@ -123,44 +123,64 @@
                     <form asp-controller="Comentarios" asp-action="Criar" method="post">
                         <input type="hidden" name="LivroId" value="@Model.Livro.Id" />
                         <div class="form-group mb-3">
-                            <textarea name="Texto" class="form-control" rows="4" placeholder="Escreva seu comentário aqui..." required></textarea>
+                            <textarea name="Texto" class="form-control comentario-input" rows="4" placeholder="Escreva seu comentário aqui..." required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary px-4">Enviar comentário</button>
+                        <button type="submit" class="btn btn-comentario px-4">Enviar comentário</button>
                     </form>
                 }
                 else
                 {
-                    <p class="text-muted text-center">Você precisa estar logado para comentar.</p>
+                    <p class="text-center text-comentar">Você precisa estar logado para comentar.</p>
                 }
             </div>
         </div>
 
-        <!-- Comentários existentes -->
-        <div class="row">
-            @if (Model.Comentarios != null && Model.Comentarios.Any())
-            {
-                foreach (var comentario in Model.Comentarios)
-                {
-                    <div class="col-md-6 mb-4">
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body bg-light">
-                                <h5 class="card-title">@comentario.Usuario?.UserName</h5>
-                                <p class="card-text">@comentario.TextoComentario</p>
-                                <small class="text-muted">@comentario.DataComentario.ToString("dd/MM/yyyy HH:mm")</small>
+        <!-- Comentários existentes em carrossel -->
+        @if (Model.Comentarios != null && Model.Comentarios.Any())
+        {
+            <div id="comentariosCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    @for (int i = 0; i < Model.Comentarios.Count; i++)
+                    {
+                        var comentario = Model.Comentarios[i];
+                        <div class="carousel-item @(i == 0 ? "active" : "")">
+                            <div class="card-comentario border-0 shadow-sm mx-auto">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <span>@comentario.Usuario?.UserName</span>
+                                    </h5>
+
+                                    <p class="card-text">@comentario.TextoComentario</p>
+
+                                    @if (User.IsInRole("Administrador"))
+                                    {
+                                        <small class="text-data fw-bold">
+                                            Comentado em: @comentario.DataComentario.ToString("dd/MM/yyyy HH:mm")
+                                        </small>
+                                    }
+                                </div>
                             </div>
                         </div>
-                    </div>
-                }
-            }
-            else
-            {
-                <div class="text-center">
-                    <p class="text-muted">Nenhum comentário ainda. Seja o primeiro a comentar!</p>
+                    }
                 </div>
-            }
-        </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#comentariosCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#comentariosCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        }
+        else
+        {
+            <div class="text-center">
+                <p class="text-muted">Nenhum comentário ainda. Seja o primeiro a comentar!</p>
+            </div>
+        }
     </div>
 </section>
+
 
 <!-- Livros semelhantes -->
 <section class="py-5 bg-light">
