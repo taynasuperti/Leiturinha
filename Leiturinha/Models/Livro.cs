@@ -1,5 +1,6 @@
 ﻿using Leiturinha.ViewModels;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Leiturinha.Models
 {
@@ -32,6 +33,8 @@ namespace Leiturinha.Models
         public ICollection<ImagemLivro> Imagens { get; set; } = new List<ImagemLivro>();
         public ICollection<Avaliacao> Avaliacoes { get; set; } = new List<Avaliacao>();
         public ICollection<Comentario> Comentarios { get; set; } = new List<Comentario>();
+        [NotMapped]
+        public IFormFile ImagemUpload { get; set; }
 
     }
 }

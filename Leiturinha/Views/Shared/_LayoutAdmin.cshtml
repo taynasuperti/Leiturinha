@@ -9,7 +9,6 @@
     <title>Leiturinha - @ViewData["Title"]</title>
 
     <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
 
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     @await RenderSectionAsync("Styles", required: false)
@@ -17,7 +16,7 @@
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand ps-3" asp-controller="Admin" asp-action="Index">Leiturinha</a>
+        <a class="navbar-brand ps-3 fw-bold" asp-controller="Admin" asp-action="Index">Leiturinha</a>
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 fs-4" id="sidebarToggle"><i class="fas fa-bars"></i></button>
         <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown">
@@ -61,7 +60,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="sb-sidenav-footer">
+                <div class="sb-sidenav-footer fw-bold">
                     <div class="small">Logado como:</div>
                     Tayná Superti
                 </div>
@@ -77,8 +76,8 @@
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Leiturinha 2023</div>
-                        <div>
+                        <div class="text-footer">Copyright &copy; Leiturinha</div>
+                        <div class="text-footer">
                             <a href="#">Política de Privacidade</a>
                             &middot;
                             <a href="#">Termos e Condições</a>

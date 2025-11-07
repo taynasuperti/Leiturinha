@@ -1,53 +1,44 @@
 @model IEnumerable<Leiturinha.Models.Comentario>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Comentários";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Index</h1>
+<div class="admin-view mt-5">
+    <h1 class="text-title fw-bold mb-4 text-center">Comentários dos Leitores</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Livro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Usuario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataComentario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TextoComentario)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Livro.Autor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Usuario.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataComentario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TextoComentario)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <div class="text-start mb-3">
+        <a asp-action="Create" class="btn btn-admin">Novo Comentário</a>
+    </div>
+
+    <table class="table table-bordered table-striped admin-table">
+        <thead>
+            <tr>
+                <th class="text-title text-center">Livro</th>
+                <th class="text-title text-center">Usuário</th>
+                <th class="text-title text-center">Data</th>
+                <th class="text-title text-center">Comentário</th>
+                <th class="text-title text-center">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-detail text-center fw-bold">@item.Livro?.Autor</td>
+                    <td class="text-detail text-center fw-bold">@item.Usuario?.UserName</td>
+                    <td class="text-detail text-center fw-bold">@item.DataComentario.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td class="text-detail">@item.TextoComentario</td>
+                    <td class="text-center">
+                        <div class="d-flex justify-content-center gap-2">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-admin btn-sm">Editar</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-admin btn-sm">Detalhes</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-admin btn-sm">Excluir</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

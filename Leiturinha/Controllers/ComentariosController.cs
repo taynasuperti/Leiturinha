@@ -84,7 +84,7 @@ namespace Leiturinha.Controllers
         public IActionResult Create()
         {
             ViewData["LivroId"] = new SelectList(_context.Livros, "Id", "Autor");
-            ViewData["UsuarioId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["UsuarioId"] = new SelectList(_context.Users, "Id", "UserName");
             return View();
         }
 
@@ -100,7 +100,7 @@ namespace Leiturinha.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["LivroId"] = new SelectList(_context.Livros, "Id", "Autor", comentario.LivroId);
-            ViewData["UsuarioId"] = new SelectList(_context.Users, "Id", "Id", comentario.UsuarioId);
+            ViewData["UsuarioId"] = new SelectList(_context.Users, "Id", "UserName");
             return View(comentario);
         }
 
@@ -118,7 +118,7 @@ namespace Leiturinha.Controllers
                 return NotFound();
             }
             ViewData["LivroId"] = new SelectList(_context.Livros, "Id", "Autor", comentario.LivroId);
-            ViewData["UsuarioId"] = new SelectList(_context.Users, "Id", "Id", comentario.UsuarioId);
+            ViewData["UsuarioId"] = new SelectList(_context.Users, "Id", "UserName");
             return View(comentario);
         }
 
@@ -153,7 +153,7 @@ namespace Leiturinha.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["LivroId"] = new SelectList(_context.Livros, "Id", "Autor", comentario.LivroId);
-            ViewData["UsuarioId"] = new SelectList(_context.Users, "Id", "Id", comentario.UsuarioId);
+            ViewData["UsuarioId"] = new SelectList(_context.Users, "Id", "UserName");
             return View(comentario);
         }
 

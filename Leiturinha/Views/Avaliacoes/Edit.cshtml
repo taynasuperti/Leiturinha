@@ -2,49 +2,50 @@
 @model Avaliacao
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar Avaliação";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Edit</h1>
+<div class="admin-form">
+    <h1 class="text-primary fw-bold mb-4 text-center">Editar Avaliação</h1>
 
-<h4>Avaliacao</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="LivroId" class="control-label"></label>
-                <select asp-for="LivroId" class="form-control" asp-items="ViewBag.LivroId"></select>
-                <span asp-validation-for="LivroId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UsuarioId" class="control-label"></label>
-                <select asp-for="UsuarioId" class="form-control" asp-items="ViewBag.UsuarioId"></select>
-                <span asp-validation-for="UsuarioId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Nota" class="control-label"></label>
-                <input asp-for="Nota" class="form-control" />
-                <span asp-validation-for="Nota" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataAvaliacao" class="control-label"></label>
-                <input asp-for="DataAvaliacao" class="form-control" />
-                <span asp-validation-for="DataAvaliacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+    <form asp-action="Edit" class="form-box">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+        <input type="hidden" asp-for="Id" />
 
-<div>
-    <a asp-action="Index">Back to List</a>
+        <div class="form-group mb-3">
+            <label asp-for="LivroId" class="form-label fw-bold">Livro</label>
+            <select asp-for="LivroId" class="form-control" asp-items="ViewBag.LivroId"></select>
+            <span asp-validation-for="LivroId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="UsuarioId" class="form-label fw-bold">Usuário</label>
+            <select asp-for="UsuarioId" class="form-control" asp-items="ViewBag.UsuarioId"></select>
+            <span asp-validation-for="UsuarioId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Nota" class="form-label fw-bold">Nota</label>
+            <input asp-for="Nota" class="form-control" />
+            <span asp-validation-for="Nota" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-4">
+            <label asp-for="DataAvaliacao" class="form-label fw-bold">Data da Avaliação</label>
+            <input asp-for="DataAvaliacao" class="form-control" />
+            <span asp-validation-for="DataAvaliacao" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex gap-3 justify-content-center">
+            <input type="submit" value="Salvar" class="btn btn-admin text-input-save" />
+            <a asp-action="Index" class="btn btn-admin">Voltar</a>
+        </div>
+    </form>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

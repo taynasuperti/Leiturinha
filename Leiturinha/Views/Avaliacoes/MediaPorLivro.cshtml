@@ -1,22 +1,30 @@
 ﻿@model List<Leiturinha.ViewModels.MediaPorLivro>
 
-<h2>Média de Avaliações por Livro</h2>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Título</th>
-            <th>Média de Estrelas</th>
-            <th>Total de Avaliações</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+@{
+    ViewData["Title"] = "Média de Avaliações";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="admin-view mt-5">
+    <h1 class="text-primary fw-bold mb-4 text-center">Média de Avaliações por Livro</h1>
+
+    <table class="table table-bordered table-striped admin-table">
+        <thead class="table-header">
             <tr>
-                <td>@item.Titulo</td>
-                <td>@item.MediaEstrelas.ToString("N1")</td>
-                <td>@item.TotalAvaliacoes</td>
+                <th class="text-table">Título</th>
+                <th class="text-table">Média de Estrelas</th>
+                <th class="text-table">Total de Avaliações</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-detail fw-bold">@item.Titulo</td>
+                    <td class="text-detail fw-bold">@item.MediaEstrelas.ToString("N1")</td>
+                    <td class="text-detail fw-bold">@item.TotalAvaliacoes</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

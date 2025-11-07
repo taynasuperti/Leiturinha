@@ -1,71 +1,54 @@
 @model IEnumerable<Leiturinha.Models.Livro>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Livros";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Index</h1>
+<div class="admin-view mt-5">
+    <h1 class="text-title fw-bold mb-4 text-center">Catálogo de Livros</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Titulo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Autor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descricao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Capa)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Destaque)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Genero)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClassificacaoIndicativa)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titulo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Autor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Capa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Destaque)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genero.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClassificacaoIndicativa.FaixaEtaria)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <div class="text-start mb-3">
+        <a asp-action="Create" class="btn btn-admin">Novo Livro</a>
+    </div>
+
+    <table class="table table-bordered table-striped admin-table">
+        <thead>
+            <tr>
+                <th class="text-title text-center">Título</th>
+                <th class="text-title text-center">Autor</th>
+                <th class="text-title text-center">Descrição</th>
+                <th class="text-title text-center">Capa</th>
+                <th class="text-title text-center">Destaque</th>
+                <th class="text-title text-center">Gênero</th>
+                <th class="text-title text-center">Classificação</th>
+                <th class="text-title text-center">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                    <td class="text-detail text-center fw-bold">@item.Titulo</td>
+                    <td class="text-detail text-center fw-bold">@item.Autor</td>
+                    <td class="text-detail text-center">@item.Descricao</td>
+                    <td class="text-center">
+                        <a href="@Url.Content(item.Capa)" target="_blank">
+                            <img src="@Url.Content(item.Capa)" alt="Capa do livro" class="img-thumbnail" style="max-height: 250px; width:auto" />
+                        </a>
+                    </td>
+                    <td class="text-detail text-center fw-bold">@item.Destaque</td>
+                    <td class="text-detail text-center fw-bold">@item.Genero?.Nome</td>
+                    <td class="text-detail text-center fw-bold">@item.ClassificacaoIndicativa?.FaixaEtaria</td>
+                    <td class="text-center">
+                        <div class="d-flex justify-content-center gap-2">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-admin btn-sm">Editar</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-admin btn-sm">Detalhes</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-admin btn-sm">Excluir</a>
+                    </div>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

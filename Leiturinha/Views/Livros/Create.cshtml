@@ -1,61 +1,94 @@
 @model Leiturinha.Models.Livro
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Cadastrar Livro";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Create</h1>
+<div class="admin-form mt-5">
+    <h1 class="text-primary fw-bold mb-4 text-center">Cadastrar Livro</h1>
 
-<h4>Livro</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Titulo" class="control-label"></label>
-                <input asp-for="Titulo" class="form-control" />
-                <span asp-validation-for="Titulo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Autor" class="control-label"></label>
-                <input asp-for="Autor" class="form-control" />
-                <span asp-validation-for="Autor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Descricao" class="control-label"></label>
-                <input asp-for="Descricao" class="form-control" />
-                <span asp-validation-for="Descricao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Capa" class="control-label"></label>
-                <input asp-for="Capa" class="form-control" />
-                <span asp-validation-for="Capa" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Destaque" /> @Html.DisplayNameFor(model => model.Destaque)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="GeneroId" class="control-label"></label>
-                <select asp-for="GeneroId" class ="form-control" asp-items="ViewBag.GeneroId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClassificacaoIndicativaId" class="control-label"></label>
-                <select asp-for="ClassificacaoIndicativaId" class ="form-control" asp-items="ViewBag.ClassificacaoIndicativaId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+    <form asp-action="Create" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+        <div class="row">
+            <!-- Campos de texto -->
+            <div class="col-md-7">
+                <div class="form-group mb-3">
+                    <label asp-for="Titulo" class="form-label">Título</label>
+                    <input asp-for="Titulo" class="form-control" />
+                    <span asp-validation-for="Titulo" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Autor" class="form-label">Autor</label>
+                    <input asp-for="Autor" class="form-control" />
+                    <span asp-validation-for="Autor" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Descricao" class="form-label">Descrição</label>
+                    <textarea asp-for="Descricao" class="form-control" rows="6" style="resize: none;"></textarea>
+                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                </div>
+
+                <div class="form-group form-check mb-4">
+                    <input class="form-check-input" asp-for="Destaque" />
+                    <label class="form-check-label" asp-for="Destaque">Destaque</label>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="GeneroId" class="form-label">Gênero</label>
+                    <select asp-for="GeneroId" class="form-control" asp-items="ViewBag.GeneroId"></select>
+                    <span asp-validation-for="GeneroId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label asp-for="ClassificacaoIndicativaId" class="form-label">Classificação Indicativa</label>
+                    <select asp-for="ClassificacaoIndicativaId" class="form-control" asp-items="ViewBag.ClassificacaoIndicativaId"></select>
+                    <span asp-validation-for="ClassificacaoIndicativaId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Card de Upload da Capa à direita -->
+            <div class="col-md-5 text-center">
+                <label class="form-label">Capa do Livro</label>
+                <div class="position-relative rounded-3 overflow-hidden bg-avatar"
+                     style="height: 300px; border: 2px solid #5D2202; border-radius: 12px;">
+                    <img src="~/img/livros/no-cover.jpg" id="PreviewImage" alt="Preview da Capa"
+                         class="w-100 h-100" style="object-fit: cover;" />
+                    <input type="file" asp-for="ImagemUpload"
+                           class="position-absolute top-0 start-0 w-100 h-100 opacity-0 cursor-pointer"
+                           accept=".jpg, .jpeg, .png, .gif, .jfif"
+                           onchange="previewFoto(event)" />
+                </div>
+                <span asp-validation-for="ImagemUpload" class="text-danger text-sm mt-2 d-block"></span>
+            </div>
+
+        </div>
+
+        <div class="d-flex justify-content-center gap-3 mt-4">
+            <input type="submit" value="Salvar" class="btn btn-admin text-input-save" />
+            <a asp-action="Index" class="btn btn-admin">Cancelar</a>
+        </div>
+    </form>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function previewFoto(event) {
+            const input = event.target;
+            const preview = document.getElementById("PreviewImage");
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 }

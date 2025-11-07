@@ -1,13 +1,63 @@
-
 @{
     ViewData["Title"] = "Área Administrativa";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1 class="my-4">Área Administrativa</h1>
-<br><br>
+<h1 class="text-center text-primary fw-bold my-5">Área Administrativa</h1>
 
-<a asp-controller="Generos" asp-action="Index">
-    Generos
-</a>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div class="col">
+        <div class="card admin-card h-100 shadow-sm border-0 text-center">
+            <div class="card-body">
+                <i class="fas fa-tags fa-2x icons mb-3"></i>
+                <h5 class="card-title fw-bold text-title">Gêneros</h5>
+                <p class="card-text">Gerencie os gêneros literários disponíveis.</p>
+                <a asp-controller="Generos" asp-action="Index" class="btn btn-admin">Acessar</a>
+            </div>
+        </div>
+    </div>
 
+    <div class="col">
+        <div class="card admin-card h-100 shadow-sm border-0 text-center">
+            <div class="card-body">
+                <i class="fas fa-book fa-2x icons mb-3"></i>
+                <h5 class="card-title fw-bold text-title">Livros</h5>
+                <p class="card-text">Adicione, edite ou remova livros do catálogo.</p>
+                <a asp-controller="Livros" asp-action="Index" class="btn btn-admin">Acessar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card admin-card h-100 shadow-sm border-0 text-center">
+            <div class="card-body">
+                <i class="fas fa-comments fa-2x icons mb-3"></i>
+                <h5 class="card-title fw-bold text-title">Comentários</h5>
+                <p class="card-text">Modere e visualize os comentários dos leitores.</p>
+                <a asp-controller="Comentarios" asp-action="Index" class="btn btn-admin">Acessar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card admin-card h-100 shadow-sm border-0 text-center">
+            <div class="card-body">
+                <i class="fas fa-star fa-2x icons mb-3"></i>
+                <h5 class="card-title fw-bold text-title">Avaliações</h5>
+                <p class="card-text">Acompanhe as avaliações dos livros.</p>
+                <a asp-controller="Avaliacoes" asp-action="Index" class="btn btn-admin">Acessar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card admin-card h-100 shadow-sm border-0 text-center">
+            <div class="card-body">
+                <i class="fas fa-star-half-alt fa-2x icons mb-3"></i>
+                <h5 class="card-title fw-bold text-title">Média de Avaliações</h5>
+                <p class="card-text">Veja o desempenho médio dos livros.</p>
+                <a asp-controller="Avaliacoes" asp-action="MediaPorLivro" class="btn btn-admin">Acessar</a>
+            </div>
+        </div>
+    </div>
+</div>
