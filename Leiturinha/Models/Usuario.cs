@@ -13,4 +13,8 @@ public class Usuario : IdentityUser
 
     [StringLength(300)]
     public string Foto { get; set; }
+
+    [DataType(DataType.Date)]
+    public DateTime DataCadastro { get; set; } = DateTime.Now;
+
 }

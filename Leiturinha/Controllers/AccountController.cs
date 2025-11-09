@@ -4,7 +4,6 @@ using Leiturinha.Models;
 using Leiturinha.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Data.Common;
 using System.Net.Mail;
 using System.Security.Claims;
 
@@ -63,24 +62,29 @@ public class AccountController : Controller
             if (result.Succeeded)
             {
                 _logger.LogInformation($"Usuário {login.Email} acessou o sistema");
-                return LocalRedirect(login.UrlRetorno);
+                TempData["LoginSuccess"] = "Login realizado com sucesso!";
+                return RedirectToAction("Index", "Home");
             }
 
             if (result.IsLockedOut)
             {
                 _logger.LogWarning($"Usuário {login.Email} está bloqueado");
                 ModelState.AddModelError("", "Sua conta está bloqueada, aguarde alguns minutos e tente novamente!");
+                TempData["LoginError"] = "Sua conta está bloqueada.";
             }
             else if (result.IsNotAllowed)
             {
                 _logger.LogWarning($"Usuário {login.Email} não confirmou sua conta");
                 ModelState.AddModelError(string.Empty, "Sua conta precisa ser confirmada antes de acessar.");
+                TempData["LoginError"] = "Sua conta precisa ser confirmada.";
             }
             else
             {
                 ModelState.AddModelError(string.Empty, "Usuário e/ou Senha Inválidos!");
+                TempData["LoginError"] = "Usuário e/ou Senha inválidos!";
             }
         }
+
         return View(login);
     }
 
@@ -116,6 +120,11 @@ public class AccountController : Controller
             usuario.EmailConfirmed = true;
 
             var result = await _userManager.CreateAsync(usuario, registro.Senha);
+            if (!result.Succeeded)
+            {
+                TempData["RegistroError"] = string.Join(" | ", result.Errors.Select(e => e.Description));
+            }
+
 
             if (result.Succeeded)
             {
@@ -123,13 +132,11 @@ public class AccountController : Controller
 
                 await _userManager.AddToRoleAsync(usuario, "Cliente");
 
-                // Upload da foto de perfil
                 if (registro.Foto != null && registro.Foto.Length > 0)
                 {
                     string nomeArquivo = usuario.Id + Path.GetExtension(registro.Foto.FileName);
                     string pastaDestino = Path.Combine(_host.WebRootPath, "img", "usuarios");
 
-                    // Garante que a pasta existe
                     if (!Directory.Exists(pastaDestino))
                         Directory.CreateDirectory(pastaDestino);
 
@@ -142,22 +149,21 @@ public class AccountController : Controller
 
                     usuario.Foto = Path.Combine("/img/usuarios/", nomeArquivo).Replace("\\", "/");
 
-                    // Atualiza o usuário com o caminho da foto
-                    _db.Update(usuario);
-                    await _db.SaveChangesAsync();
+                    await _userManager.UpdateAsync(usuario);
                 }
 
-                TempData["Success"] = "Conta criada com sucesso!";
-                return RedirectToAction(nameof(Login));
+                TempData["RegistroSuccess"] = "Conta criada com sucesso!";
+                //await _signInManager.SignInAsync(usuario, isPersistent: false);
+                return RedirectToAction("Index", "Home");
             }
 
+            TempData["RegistroError"] = "Ocorreu um erro ao criar sua conta.";
             foreach (var error in result.Errors)
                 ModelState.AddModelError(string.Empty, TranslateIdentityErrors.TranslateErrorMessage(error.Code));
         }
 
         return View(registro);
     }
-
 
     public IActionResult AccessDenied()
     {
@@ -176,4 +182,4 @@ public class AccountController : Controller
             return false;
         }
     }
-} 
+}

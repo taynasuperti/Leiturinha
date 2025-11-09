@@ -46,7 +46,7 @@
 
                             <div class="col-sm-12 col-md-5 mt-3 text-center avatar-card">
                                 <div class="avatar-card position-relative rounded-3 border border-2 overflow-hidden bg-avatar" style="height: 250px; background-color: #FFFDF5; border-color: #D9A679;">
-                                    <img src="~/img/usuarios/no-photo.png" id="PreviewImage" alt="Foto de Avatar"
+                                    <img src="~/img/usuarios/no-photo.jpg" id="PreviewImage" alt="Foto de Avatar"
                                          class="w-100 h-100" style="object-fit: cover;" />
                                     <input type="file" asp-for="Foto" id="Foto"
                                            class="position-absolute top-0 start-0 w-100 h-100 opacity-0 cursor-pointer"
@@ -55,8 +55,6 @@
                                 </div>
                                 <span asp-validation-for="Foto" class="text-danger text-sm mt-2 d-block"></span>
                             </div>
-
-
                         </div>
 
                         <div class="d-flex flex-column align-items-center justify-content-center mt-4 mb-0">
@@ -98,5 +96,27 @@
                 mensagemErro,
                 'error'
             );
+
+        @if (TempData["RegistroSuccess"] != null)
+        {
+                <text>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sucesso',
+                        text: '@TempData["RegistroSuccess"]'
+                    });
+                </text>
+        }
+
+               @if (TempData["RegistroError"] != null)
+        {
+                <text>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erro no cadastro',
+                        text: '@TempData["RegistroError"]'
+                    });
+                </text>
+        }
     </script>
 }

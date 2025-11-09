@@ -307,7 +307,7 @@ namespace Leiturinha.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DataNascimento", "Email", "EmailConfirmed", "Foto", "LockoutEnabled", "LockoutEnd", "Nome", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01", 0, "3d5b9eb1-a814-49c8-8443-9aaecbba9a1a", new DateTime(2006, 11, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "taynasuperti@gmail.com", true, "/img/usuarios/no-photo.png", true, null, "Tayná Carolina Miguel Superti", "TAYNASUPERTI@GMAIL.COM", "TAYNASUPERTI", "AQAAAAIAAYagAAAAEAe6j1qpoUF1DskOFslNa0HM8o5mc5DnfxrH72R7rMGWxXmtA/+78KBA9GDzZcV+LQ==", null, false, "cf8e89dc-2c23-425a-88d7-e6e2d62a4e79", false, "taynasuperti" });
+                values: new object[] { "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01", 0, "3d5b9eb1-a814-49c8-8443-9aaecbba9a1a", new DateTime(2006, 11, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "taynasuperti@gmail.com", true, "/img/usuarios/no-photo.jpg", true, null, "Tayná Carolina Miguel Superti", "TAYNASUPERTI@GMAIL.COM", "TAYNASUPERTI", "AQAAAAIAAYagAAAAEAe6j1qpoUF1DskOFslNa0HM8o5mc5DnfxrH72R7rMGWxXmtA/+78KBA9GDzZcV+LQ==", null, false, "cf8e89dc-2c23-425a-88d7-e6e2d62a4e79", false, "taynasuperti" });
 
             migrationBuilder.InsertData(
                 table: "Classificacoes",

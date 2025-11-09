@@ -1,32 +1,37 @@
 ﻿@model Leiturinha.ViewModels.HomeVM
 @{
     ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <!-- Header Start -->
-    <div class="container-fluid bg-primary px-0 px-md-5 mb-5">
-      <div class="row align-items-center px-3">
+@if (User.Identity.IsAuthenticated)
+{
+    <h5>Bem-vindo, @User.Identity.Name!</h5>
+}
+else
+{
+    <h5>Você não está logado.</h5>
+}
+
+<!-- Header Start -->
+<div class="container-fluid bg-primary px-0 px-md-5 mb-5">
+    <div class="row align-items-center px-3">
         <div class="col-lg-6 text-center text-lg-left">
-          <h1 class="display-3 font-weight-bold">
-            LEITURINHA
-          </h1>
-          <p class="mb-4">
+            <h1 class="display-3 font-weight-bold">LEITURINHA</h1>
+            <p class="mb-4">
                 O <strong>Leiturinha</strong> nasceu para que a escolha de livros infantis se torne um momento cheio de significado. Aqui, pais, professores e responsáveis podem descobrir novas leituras, deixar avaliações e compartilhar como foi a experiência com cada história.
-          </p>
+            </p>
             <p class="mb-4">
                 Mais do que um espaço de opiniões, o <strong>Leiturinha</strong> é um cantinho de troca e afeto — onde cada resenha ajuda outras famílias a encontrar livros que encantem, ensinem e criem memórias.
             </p>
             <a asp-controller="Home" asp-action="Livros" class="btn btn-secondary mt-1 py-3 px-5">Ver todos os livros</a>
         </div>
         <div class="col-lg-6 text-center text-lg-right">
-          <img class="img-header img-fluid mt-5" src="~/img/header/header3.jpg" alt="" />
+            <img class="img-header img-fluid mt-5" src="~/img/header/header3.jpg" alt="" />
         </div>
-      </div>
-
     </div>
-    <!-- Header End -->
-
-
+</div>
+<!-- Header End -->
 <!-- Destaques Start -->
 <section id="destaques" class="py-5 bg-light">
     <div class="container px-4 px-lg-5">
@@ -52,7 +57,6 @@
 
                             <div class="card-body text-center">
                                 <h4 class="card-title">@livro.Titulo</h4>
-                                
                             </div>
                             <div class="card-footer bg-transparent py-3 px-4">
                                 <div class="d-flex justify-content-between mb-2">
@@ -76,7 +80,6 @@
                                         @:⭐
                                     }
                                 </span>
-
                             </div>
 
                             <a asp-controller="Home" asp-action="Livro" asp-route-id="@livro.Id" class="btn btn-ver-mais mx-auto mb-4">Ver mais</a>
@@ -88,13 +91,54 @@
             {
                 <h3 class="text-center">Nenhum livro em destaque no momento.</h3>
             }
-
         </div>
     </div>
 </section>
 <!-- Destaques End -->
+@section Scripts {
+    <script>
+        @if (TempData["LoginSuccess"] != null)
+        {
+                <text>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Login realizado!',
+                        text: '@TempData["LoginSuccess"]'
+                    });
+                </text>
+        }
 
+        @if (TempData["RegistroSuccess"] != null)
+        {
+                <text>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Conta criada!',
+                        text: '@TempData["RegistroSuccess"]'
+                    });
+                </text>
+        }
 
+        @if (TempData["LoginError"] != null)
+        {
+                <text>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erro no login',
+                        text: '@TempData["LoginError"]'
+                    });
+                </text>
+        }
 
-
-
+        @if (TempData["RegistroError"] != null)
+        {
+                <text>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erro no cadastro',
+                        text: '@TempData["RegistroError"]'
+                    });
+                </text>
+        }
+    </script>
+}

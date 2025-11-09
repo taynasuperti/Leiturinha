@@ -447,7 +447,7 @@ namespace Leiturinha.Data
                     EmailConfirmed = true,
                     Nome = "Tayná Carolina Miguel Superti",
                     DataNascimento = new DateTime(2006, 11, 6),
-                    Foto = "/img/usuarios/no-photo.png"
+                    Foto = "/img/usuarios/no-photo.jpg"
                 }
             };
 

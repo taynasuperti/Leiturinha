@@ -745,6 +745,9 @@ namespace Leiturinha.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("DataCadastro")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime?>("DataNascimento")
                         .HasColumnType("datetime2");
 
@@ -814,18 +817,19 @@ namespace Leiturinha.Migrations
                         {
                             Id = "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3d5b9eb1-a814-49c8-8443-9aaecbba9a1a",
+                            ConcurrencyStamp = "606dd83f-2c1a-44c5-9d4a-e203753e0fb7",
+                            DataCadastro = new DateTime(2025, 11, 9, 16, 47, 14, 925, DateTimeKind.Local).AddTicks(6268),
                             DataNascimento = new DateTime(2006, 11, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "taynasuperti@gmail.com",
                             EmailConfirmed = true,
-                            Foto = "/img/usuarios/no-photo.png",
+                            Foto = "/img/usuarios/no-photo.jpg",
                             LockoutEnabled = true,
                             Nome = "Tayná Carolina Miguel Superti",
                             NormalizedEmail = "TAYNASUPERTI@GMAIL.COM",
                             NormalizedUserName = "TAYNASUPERTI",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAe6j1qpoUF1DskOFslNa0HM8o5mc5DnfxrH72R7rMGWxXmtA/+78KBA9GDzZcV+LQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPr21K29hORGXmrpkUcqeGRQNQQao8guEJrdMHkIUNxYf7E572Aa2Xo6JezsCTKMeQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cf8e89dc-2c23-425a-88d7-e6e2d62a4e79",
+                            SecurityStamp = "d8c053f2-92f2-4cd2-9f69-2a7a69a32d95",
                             TwoFactorEnabled = false,
                             UserName = "taynasuperti"
                         });

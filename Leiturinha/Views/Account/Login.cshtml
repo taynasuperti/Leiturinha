@@ -17,7 +17,7 @@
                         <div asp-validation-summary="ModelOnly" hidden></div>
                         <input type="hidden" asp-for="UrlRetorno">
                         <div class="form-floating mb-3">
-                            <input class="form-control" asp-for="Email"/>
+                            <input class="form-control" asp-for="Email" />
                             <label asp-for="Email"></label>
                             <span asp-validation-for="Email" class="text-danger text-sm"></span>
                         </div>
@@ -27,7 +27,7 @@
                             <span asp-validation-for="Senha" class="text-danger text-sm"></span>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" asp-for="Lembrar" type="checkbox" value=""/>
+                            <input class="form-check-input" asp-for="Lembrar" type="checkbox" value="" />
                             <label class="form-check-label" asp-for="Lembrar"></label>
                         </div>
                         <div class="d-flex flex-column align-items-center justify-content-center mt-4 mb-0">
@@ -49,7 +49,7 @@
     <script type="text/javascript">
         let mensagemErro = '';
         $(".validation-summary-errors ul li").each(function() {
-            mensagemErro += $(this).text() + '<br />'
+            mensagemErro += $(this).text() + '<br />';
         });
         if (mensagemErro != '')
             Swal.fire(
@@ -57,5 +57,27 @@
                 mensagemErro,
                 'error'
             );
+
+        @if (TempData["LoginSuccess"] != null)
+        {
+                <text>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sucesso',
+                        text: '@TempData["LoginSuccess"]'
+                    });
+                </text>
+        }
+
+        @if (TempData["LoginError"] != null)
+        {
+                <text>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erro',
+                        text: '@TempData["LoginError"]'
+                    });
+                </text>
+        }
     </script>
 }
