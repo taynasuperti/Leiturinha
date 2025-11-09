@@ -18,6 +18,36 @@ namespace Leiturinha.Controllers
             _db = db;
         }
 
+        // metodo auxiliar para montar o LivroVM
+        private LivroVM MontarLivroVM(Livro livro)
+        {
+            var mediaEstrelas = livro.Avaliacoes.Any() ? livro.Avaliacoes.Average(a => a.Nota) : 0;
+
+            var semelhantes = _db.Livros
+                .Where(l => l.Id != livro.Id && l.GeneroId == livro.GeneroId)
+                .Include(l => l.Genero)
+                .Include(l => l.ClassificacaoIndicativa)
+                .Take(4)
+                .ToList();
+
+            var comentarios = _db.Comentarios
+                .Include(c => c.Usuario)
+                .Where(c => c.LivroId == livro.Id)
+                .OrderByDescending(c => c.DataComentario)
+                .ToList();
+
+            var imagens = livro.Imagens?.ToList() ?? new List<ImagemLivro>();
+
+            return new LivroVM
+            {
+                Livro = livro,
+                MediaEstrelas = mediaEstrelas,
+                Semelhantes = semelhantes,
+                Comentarios = comentarios,
+                Imagens = imagens
+            };
+        }
+
         // Página inicial com todos os livros e destaques no topo
         public IActionResult Index()
         {

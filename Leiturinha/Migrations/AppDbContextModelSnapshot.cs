@@ -807,14 +807,14 @@ namespace Leiturinha.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.ToTable("Usuario", (string)null);
+                    b.ToTable("AspNetUsers", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = "a1f1a6c2-1111-4b1e-bf6e-2a9f5f4a9f01",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fe82f5d5-fae9-40e8-b93f-2be5d2415119",
+                            ConcurrencyStamp = "3d5b9eb1-a814-49c8-8443-9aaecbba9a1a",
                             DataNascimento = new DateTime(2006, 11, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "taynasuperti@gmail.com",
                             EmailConfirmed = true,
@@ -823,9 +823,9 @@ namespace Leiturinha.Migrations
                             Nome = "Tayná Carolina Miguel Superti",
                             NormalizedEmail = "TAYNASUPERTI@GMAIL.COM",
                             NormalizedUserName = "TAYNASUPERTI",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAnn5BbwkonPozqX+AGFSrcwOhHka/DDKsU7x1LYWumpvBidSQryP/pE7HeBxT75qg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAe6j1qpoUF1DskOFslNa0HM8o5mc5DnfxrH72R7rMGWxXmtA/+78KBA9GDzZcV+LQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "05bfcf8f-452d-48d2-b66d-131692fb9a74",
+                            SecurityStamp = "cf8e89dc-2c23-425a-88d7-e6e2d62a4e79",
                             TwoFactorEnabled = false,
                             UserName = "taynasuperti"
                         });
@@ -855,7 +855,7 @@ namespace Leiturinha.Migrations
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.ToTable("Perfil", (string)null);
+                    b.ToTable("AspNetRoles", (string)null);
 
                     b.HasData(
                         new
@@ -900,7 +900,7 @@ namespace Leiturinha.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("PerfilRegra", (string)null);
+                    b.ToTable("AspNetRoleClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -925,7 +925,7 @@ namespace Leiturinha.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UsuarioRegra", (string)null);
+                    b.ToTable("AspNetUserClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
@@ -947,7 +947,7 @@ namespace Leiturinha.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UsuarioLogin", (string)null);
+                    b.ToTable("AspNetUserLogins", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
@@ -962,7 +962,7 @@ namespace Leiturinha.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("UsuarioPerfil", (string)null);
+                    b.ToTable("AspNetUserRoles", (string)null);
 
                     b.HasData(
                         new
@@ -998,7 +998,7 @@ namespace Leiturinha.Migrations
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("UsuarioToken", (string)null);
+                    b.ToTable("AspNetUserTokens", (string)null);
                 });
 
             modelBuilder.Entity("Leiturinha.Models.Avaliacao", b =>
@@ -1053,13 +1053,13 @@ namespace Leiturinha.Migrations
                     b.HasOne("Leiturinha.Models.ClassificacaoIndicativa", "ClassificacaoIndicativa")
                         .WithMany("Livros")
                         .HasForeignKey("ClassificacaoIndicativaId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Leiturinha.Models.Genero", "Genero")
                         .WithMany("Livros")
                         .HasForeignKey("GeneroId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("ClassificacaoIndicativa");

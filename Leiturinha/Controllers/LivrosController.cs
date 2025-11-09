@@ -23,10 +23,10 @@ namespace Leiturinha.Controllers
         // GET: Livros
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.Livros
+            var livros = _context.Livros
                 .Include(l => l.ClassificacaoIndicativa)
                 .Include(l => l.Genero);
-            return View(await appDbContext.ToListAsync());
+            return View(await livros.ToListAsync());
         }
 
         // GET: Livros/Details/5
@@ -56,7 +56,7 @@ namespace Leiturinha.Controllers
         // POST: Livros/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Titulo,Autor,Descricao,Capa,Destaque,GeneroId,ClassificacaoIndicativaId")] Livro livro, IFormFile ImagemUpload)
+        public async Task<IActionResult> Create(Livro livro, IFormFile ImagemUpload)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +101,7 @@ namespace Leiturinha.Controllers
         // POST: Livros/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Titulo,Autor,Descricao,Capa,Destaque,GeneroId,ClassificacaoIndicativaId")] Livro livro, IFormFile ImagemUpload)
+        public async Task<IActionResult> Edit(int id, Livro livro, IFormFile ImagemUpload)
         {
             if (id != livro.Id) return NotFound();
 

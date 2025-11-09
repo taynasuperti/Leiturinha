@@ -57,12 +57,12 @@
                      style="height: 300px; border: 2px solid #5D2202; border-radius: 12px;">
                     <img src="~/img/livros/no-cover.jpg" id="PreviewImage" alt="Preview da Capa"
                          class="w-100 h-100" style="object-fit: cover;" />
-                    <input type="file" asp-for="ImagemUpload"
+                    <input type="file" name="ImagemUpload" id="ImagemUpload"
                            class="position-absolute top-0 start-0 w-100 h-100 opacity-0 cursor-pointer"
                            accept=".jpg, .jpeg, .png, .gif, .jfif"
                            onchange="previewFoto(event)" />
                 </div>
-                <span asp-validation-for="ImagemUpload" class="text-danger text-sm mt-2 d-block"></span>
+                <span class="text-danger text-sm mt-2 d-block" id="ImagemUploadError"></span>
             </div>
 
         </div>

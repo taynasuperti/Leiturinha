@@ -21,13 +21,37 @@ namespace Leiturinha.Data
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<Usuario>().ToTable("Usuario");
-            builder.Entity<IdentityRole>().ToTable("Perfil");
-            builder.Entity<IdentityUserRole<string>>().ToTable("UsuarioPerfil");
-            builder.Entity<IdentityUserClaim<string>>().ToTable("UsuarioRegra");
-            builder.Entity<IdentityUserToken<string>>().ToTable("UsuarioToken");
-            builder.Entity<IdentityUserLogin<string>>().ToTable("UsuarioLogin");
-            builder.Entity<IdentityRoleClaim<string>>().ToTable("PerfilRegra");
+            builder.Entity<Livro>()
+                .HasOne(l => l.Genero)
+                .WithMany(g => g.Livros) // ← isso é o que faltava!
+                .HasForeignKey(l => l.GeneroId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<ClassificacaoIndicativa>()
+                .HasMany(c => c.Livros)
+                .WithOne(l => l.ClassificacaoIndicativa)
+                .HasForeignKey(l => l.ClassificacaoIndicativaId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+            builder.Entity<Livro>()
+                .HasMany(l => l.Imagens)
+                .WithOne(i => i.Livro)
+                .HasForeignKey(i => i.LivroId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Livro>()
+                .HasMany(l => l.Avaliacoes)
+                .WithOne(a => a.Livro)
+                .HasForeignKey(a => a.LivroId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Livro>()
+                .HasMany(l => l.Comentarios)
+                .WithOne(c => c.Livro)
+                .HasForeignKey(c => c.LivroId)
+                .OnDelete(DeleteBehavior.Cascade);
+
 
             AppDbSeed.Seed(builder);
         }
