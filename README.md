@@ -102,12 +102,6 @@ Ou atualize se já tiver instalado:
 dotnet tool update --global dotnet-ef
 ```
 
-### Execute as Migrations
-Importante: Se você clonou o projeto que anteriormente usava outro banco, remova as migrations antigas primeiro:
-
-```bash
-dotnet ef migrations remove
-```
 
 ### Crie as migrations para SQL Server:
 
@@ -141,6 +135,7 @@ http: ```//localhost:5001```
 
 (As portas exatas serão exibidas no console ao iniciar)
 
+---
 
 ## Acesso Administrativo
 
@@ -151,8 +146,6 @@ O sistema tem automaticamente um usuário administrador:
 - Email: ```taynasuperti@gmail.com```
 - Senha: ```123456```
 
-IMPORTANTE: Altere essas credenciais após o primeiro acesso em produção!
-
 ### Acessar Área Administrativa
 
 1- Acesse a aplicação
@@ -161,7 +154,9 @@ IMPORTANTE: Altere essas credenciais após o primeiro acesso em produção!
 
 3- Use as credenciais acima
 
-4- Você será redirecionado para o painel administrativo
+4- Você terá acesso ao painel administrativo
+
+---
 
 ## Estrutura do Projeto
 
@@ -174,42 +169,63 @@ Leiturinha/
 │ ├── AccountController.cs – Autenticação e registro
 │ ├── HomeController.cs – Páginas públicas
 │ ├── LivrosController.cs – Visualização e gerenciamento de livros
-│ └── AvaliacoesController.cs – Avaliações e comentários
-│
+| ├── ComentariosController.cs - Comentários e gerenciamento de comentários
+| ├── GenerosController.cs - Gêneros e gerenciamento dos gêneros literários
+│ └── AvaliacoesController.cs – Avaliações com médias de estrelas
+|
+├── Data/
+│ ├── AppDbContext.cs – Contexto do banco
+│ └── AppDbSeeds.cs – Dados iniciais
+|
+├── Helpers/
+│ ├── Helper.cs – Função utilitária para validação de e-mails
+│ └── TranslateIdentityErrors.cs – Traduz mensagens de erro do Identity para português
+|
+├── Migrations/ – Migrations do Entity Framework
+|
 ├── Models/
 │ ├── Livro.cs – Entidade Livro
 │ ├── Genero.cs – Gênero literário
 │ ├── Avaliacao.cs – Avaliações dos livros
 │ ├── Comentario.cs – Comentários dos usuários
-│ └── Usuario.cs – Usuário comum e administrador
+| ├── ClassificacaoIndicativa.cs - Classificação indicativa dos livros
+│ ├── Usuario.cs – Usuário comum e administrador
+| ├── ImagemLivro.cs – Imagem dos livros
+| └── ErrorViewModel.cs – Exibe informações de erro
+|
+├── Properties/
+│ └── launchSettings.json – Define perfis de execução e configurações de ambiente para desenvolvimento local
+|
+├── ViewModels/
+│ ├── AvaliacaoRequest.cs – Modelo para envio de nota de avaliação de um livro
+│ ├── HomeVM.cs – Dados para exibição de livros em destaque e todos os disponíveis na página inicial
+│ ├── LivroVM.cs – Modelo que agrupa livro, semelhantes, comentários, imagens e média de estrelas para exibição dos dados nos cards
+│ ├── LoginVM.cs – Dados para autenticação do usuário com opção de manter login ativo
+│ ├── MediaPorLivro.cs – Representa estatísticas de avaliação por livro (média e total de avaliações)
+│ ├── RegistroVM.cs – Modelo para cadastro de novos usuários com validações e foto
+│ └── UsuarioVM.cs – Informações básicas do usuário como nome, email, username e data de cadastro
 │
 ├── Views/
 │ ├── Admin/ – Views administrativas
 │ ├── Account/ – Views de autenticação
 │ ├── Home/ – Views públicas
 │ ├── Livros/ – Views de leitura e detalhes
-│ ├── Avaliacoes/ – Views de avaliações e comentários
-│ └── Shared/ – Layouts e componentes compartilhados
-│
-├── Data/
-│ ├── AppDbContext.cs – Contexto do banco
-│ └── DbInitializer.cs – Dados iniciais
-│
-├── Migrations/ – Migrations do Entity Framework
-├── Diagramas/ – Diagramas técnicos do projeto
-│ ├── DiagramaClasses.md – Diagrama de classes
-│ └── DiagramaCasosUso.md – Diagrama de casos de uso
+│ ├── Avaliacoes/ – Views de avaliações e média de estrelas
+| ├── Comentarios/ – Views de comentários
+| ├── Generos/ – Views de gêneros literários
+| └── ErrorViewModel.cs – Exibe informações de erro
 │
 ├── wwwroot/ – Arquivos estáticos (CSS, JS, imagens)
 │ ├── css/
 │ ├── js/
 │ ├── lib/
-│ └── uploads/ – Uploads de capas e imagens de perfil
+│ └── img/ – Uploads de imagens de livros e imagens de perfil
 │
 ├── appsettings.json – Configurações da aplicação
 ├── Program.cs – Ponto de entrada da aplicação
 └── README.md – Este arquivo
 ```
+---
 
 ## Estrutura do Banco de Dados
 ### Tabelas Principais
@@ -219,10 +235,11 @@ Leiturinha/
 - Id (PK) 
 - Titulo
 - Autor
-- Sinopse
-- ImagemCapa
+- Descricao
+- Capa
+- Destaque
 - GeneroId (FK → Generos)
-- DataCadastro
+- ClassificacaoIndicativaId (FK → ClassificacaoIndicativa)
   
 **Avaliacoes**
 
@@ -256,6 +273,8 @@ Leiturinha/
 
 - Id (PK)
 - Nome
+
+---
 
 ## Como Usar
 
@@ -300,6 +319,8 @@ Leiturinha/
 
 3- Confirme a ação
 
+---
+
 ## Solução de Problemas
 
 ### Erro de Conexão com SQL Server
@@ -325,6 +346,8 @@ dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
 
+---
+
 ## Metodologia e Arquitetura
 
 Desenvolvido utilizando:
@@ -333,6 +356,3 @@ Desenvolvido utilizando:
 - Padrão **MVC (Model-View-Controller)**  
 - **Repository Pattern** com Entity Framework Core  
 - **Dependency Injection** para gerenciamento de dependências  
-- Separação clara de responsabilidades entre camadas  
-- Abordagem **Code First** com Entity Framework Core  
-- Autenticação baseada em **Claims** e controle de acesso por perfil
