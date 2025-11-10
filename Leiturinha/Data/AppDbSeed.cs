@@ -445,9 +445,9 @@ namespace Leiturinha.Data
                     NormalizedUserName = "TAYNASUPERTI",
                     LockoutEnabled = true,
                     EmailConfirmed = true,
-                    Nome = "Tayná Carolina Miguel Superti",
+                    Nome = "Tayná Superti",
                     DataNascimento = new DateTime(2006, 11, 6),
-                    Foto = "/img/usuarios/no-photo.jpg"
+                    Foto = "/img/usuarios/admin.jpg"
                 }
             };
 

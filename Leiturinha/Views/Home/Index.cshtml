@@ -4,15 +4,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (User.Identity.IsAuthenticated)
-{
-    <h5>Bem-vindo, @User.Identity.Name!</h5>
-}
-else
-{
-    <h5>Você não está logado.</h5>
-}
-
 <!-- Header Start -->
 <div class="container-fluid bg-primary px-0 px-md-5 mb-5">
     <div class="row align-items-center px-3">
@@ -97,17 +88,6 @@ else
 <!-- Destaques End -->
 @section Scripts {
     <script>
-        @if (TempData["LoginSuccess"] != null)
-        {
-                <text>
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Login realizado!',
-                        text: '@TempData["LoginSuccess"]'
-                    });
-                </text>
-        }
-
         @if (TempData["RegistroSuccess"] != null)
         {
                 <text>
@@ -126,17 +106,6 @@ else
                         icon: 'error',
                         title: 'Erro no login',
                         text: '@TempData["LoginError"]'
-                    });
-                </text>
-        }
-
-        @if (TempData["RegistroError"] != null)
-        {
-                <text>
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Erro no cadastro',
-                        text: '@TempData["RegistroError"]'
                     });
                 </text>
         }

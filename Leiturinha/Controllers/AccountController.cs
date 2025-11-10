@@ -153,7 +153,7 @@ public class AccountController : Controller
                 }
 
                 TempData["RegistroSuccess"] = "Conta criada com sucesso!";
-                //await _signInManager.SignInAsync(usuario, isPersistent: false);
+                await _signInManager.SignInAsync(usuario, isPersistent: false);
                 return RedirectToAction("Index", "Home");
             }
 

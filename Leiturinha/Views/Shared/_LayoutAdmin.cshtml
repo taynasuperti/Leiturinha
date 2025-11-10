@@ -1,3 +1,10 @@
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<Usuario> UserManager
+
+@{
+    var usuario = await UserManager.GetUserAsync(User);
+    var caminhoFoto = usuario?.Foto ?? "~/img/usuarios/no-photo.jpg";
+}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -15,13 +22,14 @@
 </head>
 
 <body class="sb-nav-fixed">
+
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <a class="navbar-brand ps-3 fw-bold" asp-controller="Admin" asp-action="Index">Leiturinha</a>
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 fs-4" id="sidebarToggle"><i class="fas fa-bars"></i></button>
         <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-user fa-fw fs-4"></i>
+                    <img src="@Url.Content(caminhoFoto)" width="40" height="40" class="rounded-circle object-fit-cover" style="border: 2px solid #D9A679;">
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#">Perfil</a></li>
@@ -62,7 +70,7 @@
                 </div>
                 <div class="sb-sidenav-footer fw-bold">
                     <div class="small">Logado como:</div>
-                    Tayná Superti
+                    @usuario?.Nome
                 </div>
             </nav>
         </div>
