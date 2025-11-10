@@ -1,0 +1,32 @@
+﻿@model List<Leiturinha.ViewModels.UsuarioVM>
+
+@{
+    ViewData["Title"] = "Usuários Logados";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="admin-view mt-5">
+    <h1 class="text-primary fw-bold mb-4 text-center">Usuários Ativos no Sistema</h1>
+
+    <table class="table table-bordered table-striped admin-table">
+        <thead class="table-header">
+            <tr>
+                <th class="text-table">Nome</th>
+                <th class="text-table">Email</th>
+                <th class="text-table">Username</th>
+                <th class="text-table">Data de Cadastro</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var usuario in Model)
+            {
+                <tr>
+                    <td class="text-detail fw-bold">@usuario.Nome</td>
+                    <td class="text-detail fw-bold">@usuario.Email</td>
+                    <td class="text-detail fw-bold">@usuario.UserName</td>
+                    <td class="text-detail fw-bold">@usuario.DataCadastro.ToString("dd/MM/yyyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

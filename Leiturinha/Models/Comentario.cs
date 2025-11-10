@@ -26,7 +26,7 @@ public class Comentario
     [Required(ErrorMessage = "A Data é obrigatória")]
     public DateTime DataComentario { get; set; }
 
-    [StringLength(300)]
+    [MaxLength(5000)]
     [Required(ErrorMessage = "O Texto é obrigatório")]
     public string TextoComentario { get; set; }
 }
