@@ -240,14 +240,24 @@ Leiturinha/
 - Destaque
 - GeneroId (FK → Generos)
 - ClassificacaoIndicativaId (FK → ClassificacaoIndicativa)
-  
+- Imagens (1:N → ImagemLivro)
+- Avaliacoes (1:N → Avaliacao)
+- Comentarios (1:N → Comentario)
+
+**ImagemLivro**
+
+- Id (PK)
+- LivroId (FK → Livros)
+- CaminhoImagem
+- DescricaoFoto
+
+
 **Avaliacoes**
 
 - Id (PK)
 - LivroId (FK → Livros)
 - UsuarioId (FK → Usuarios)
-- Estrelas
-- Comentario
+- Nota
 - DataAvaliacao
 
 **Comentarios**
@@ -255,7 +265,7 @@ Leiturinha/
 - Id (PK)
 - LivroId (FK → Livros)
 - UsuarioId (FK → Usuarios)
-- Texto
+- TextoComentario
 - DataComentario
 
 **Usuarios**
@@ -264,15 +274,24 @@ Leiturinha/
 - Nome
 - Email
 - UserName
-- SenhaHash
+- SenhaHash (herdado de IdentityUser)
+- DataNascimento
 - DataCadastro
 - Foto
-- Roles
+- Roles (herdado de IdentityUser)
 
 **Generos**
 
 - Id (PK)
 - Nome
+- Livros (1:N → Livros)
+
+**ClassificacaoIndicativa**
+
+- Id (PK)
+- FaixaEtaria
+- Livros (1:N → Livros)
+
 
 ---
 
